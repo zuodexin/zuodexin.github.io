@@ -3,8 +3,8 @@ title: 和为K的最短子数组
 date: 2020-11-08 21:44:04
 tags: [leetcode,数组]
 ---
-
-
+阅读全文查看代码
+<!--more-->
 ```c++
 class Solution {
    public:

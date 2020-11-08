@@ -10,7 +10,7 @@ tags: [leetcode,字符串]
 用两个unordered_map来保存映射关系
 
 注意maker_pair中的类型为引用类型
-
+<!--more-->
 ```c++
 class Solution {
 public:

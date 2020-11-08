@@ -3,7 +3,8 @@ title: N皇后
 date: 2020-11-08 21:40:38
 tags: [leetcode,回溯]
 ---
-
+阅读全文查看代码
+<!--more-->
 ```c++
 class Solution {
    public:
