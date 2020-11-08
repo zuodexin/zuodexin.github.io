@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
-keywords:
+title: 算法加油站
+subtitle: '主营cv、推荐类算法，不定期刷题'
+description: '做饭很好吃'
+keywords: '关键词'
 author: Dexin
 language: zh-Hans
 timezone: 'Asia/Shanghai'
