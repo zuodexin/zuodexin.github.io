@@ -30,7 +30,7 @@
 <meta property="og:description" content="背景这个问题起源于多视角几何里面的三角化问题。已知n个视角的相机参数，和某一关键点在每个视角下的投影，如何计算这个关键点的三维坐标。粗略地想，连接投影在图片上的关键点和相机光心可以获得一条直线，n个视角可以获得n条这样的直线，求交点即可求得3D坐标。不过，在现实当中，关键点的投影总是存在扰动，这n条直线不可能完美地交于一个点，那么这种情况如何计算3D坐标呢？">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-07-26T15:25:19.000Z">
-<meta property="article:modified_time" content="2020-11-08T14:37:43.575Z">
+<meta property="article:modified_time" content="2020-11-08T14:44:38.688Z">
 <meta property="article:author" content="Dexin">
 <meta property="article:tag" content="slam">
 <meta property="article:tag" content="cv">
@@ -201,7 +201,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
-          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#猜想"><span class="nav-number">2.</span> <span class="nav-text">猜想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最小值存在性"><span class="nav-number">3.</span> <span class="nav-text">最小值存在性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最小值求法"><span class="nav-number">4.</span> <span class="nav-text">最小值求法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#三角化的求解方式"><span class="nav-number">4.1.</span> <span class="nav-text">三角化的求解方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序验证"><span class="nav-number">4.2.</span> <span class="nav-text">程序验证</span></a></li></ol></li></ol></div>
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text">猜想</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">3.</span> <span class="nav-text">最小值存在性</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">4.</span> <span class="nav-text">最小值求法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">4.1.</span> <span class="nav-text">三角化的求解方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">4.2.</span> <span class="nav-text">程序验证</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -309,7 +309,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-08 22:37:43" itemprop="dateModified" datetime="2020-11-08T22:37:43+08:00">2020-11-08</time>
+                <time title="修改时间：2020-11-08 22:44:38" itemprop="dateModified" datetime="2020-11-08T22:44:38+08:00">2020-11-08</time>
               </span>
 
           
@@ -330,10 +330,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><p>这个问题起源于多视角几何里面的三角化问题。已知n个视角的相机参数，和某一关键点在每个视角下的投影，如何计算这个关键点的三维坐标。粗略地想，连接投影在图片上的关键点和相机光心可以获得一条直线，n个视角可以获得n条这样的直线，求交点即可求得3D坐标。不过，在现实当中，关键点的投影总是存在扰动，这n条直线不可能完美地交于一个点，那么这种情况如何计算3D坐标呢？<br><a id="more"></a></p>
+        <h1><span id="背景">背景</span></h1><p>这个问题起源于多视角几何里面的三角化问题。已知n个视角的相机参数，和某一关键点在每个视角下的投影，如何计算这个关键点的三维坐标。粗略地想，连接投影在图片上的关键点和相机光心可以获得一条直线，n个视角可以获得n条这样的直线，求交点即可求得3D坐标。不过，在现实当中，关键点的投影总是存在扰动，这n条直线不可能完美地交于一个点，那么这种情况如何计算3D坐标呢？<br><a id="more"></a></p>
 <p>常用的方法是根据几何共线关系建立方程组，这个方程组通常是超定方程，那么可以用最小二乘法求解。最小二乘一般有两种，一种是伪逆法，一种是SVD分解，伪逆法对应的条件数比SVD分解对应的条件数大，矩阵更加病态，数值上不稳定，所以一般SVD分解会更好一些。</p>
-<h1 id="猜想"><a href="#猜想" class="headerlink" title="猜想"></a>猜想</h1><p>从几何上看，求上述方程组的最小二乘解似乎是在找一个点，要求它到n条直线的距离之和最小，那么存不存在这样的点呢，这样的点有多少个？</p>
-<h1 id="最小值存在性"><a href="#最小值存在性" class="headerlink" title="最小值存在性"></a>最小值存在性</h1><p>首先需要对问题进行建模，直线的表示方法有解析式和向量形式，为了避免解析形式除法运算，这里使用向量形式。直线的向量形式为<br>$\mathcal{L}(t)=P+t\vec{d}$<br>P是直线上的一点，$\vec{d}$是单位矢量，设Q为直线外的一点，Q到$\mathcal{L}$的距离为<br>$d = ||\overrightarrow{PQ}-t_0\vec{d}||$<br>其中$t_0=\vec{d}\cdot\overrightarrow{PQ}$<br>定义函数$\mathcal{S}(Q)$为Q到n条直线的距离和</p>
+<h1><span id="猜想">猜想</span></h1><p>从几何上看，求上述方程组的最小二乘解似乎是在找一个点，要求它到n条直线的距离之和最小，那么存不存在这样的点呢，这样的点有多少个？</p>
+<h1><span id="最小值存在性">最小值存在性</span></h1><p>首先需要对问题进行建模，直线的表示方法有解析式和向量形式，为了避免解析形式除法运算，这里使用向量形式。直线的向量形式为<br>$\mathcal{L}(t)=P+t\vec{d}$<br>P是直线上的一点，$\vec{d}$是单位矢量，设Q为直线外的一点，Q到$\mathcal{L}$的距离为<br>$d = ||\overrightarrow{PQ}-t_0\vec{d}||$<br>其中$t_0=\vec{d}\cdot\overrightarrow{PQ}$<br>定义函数$\mathcal{S}(Q)$为Q到n条直线的距离和</p>
 <p>$\mathcal{S}({Q})=\sum_i^{n}{d_i}=\sum_i^{n}{||\overrightarrow{P_iQ}-t_0\vec{d_i}||}$<br>假设$Q_1,Q_2$是空间内任意两点，</p>
 <script type="math/tex; mode=display">\frac{1}{2}(\mathcal{S}(Q_1)+\mathcal{S}(Q_2))=\frac{1}{2}\sum_i^{n}{(||\overrightarrow{P_iQ_1}-t_1\vec{d_i}||+||\overrightarrow{P_iQ_2}-t_2\vec{d_i}||})
 
@@ -342,12 +342,12 @@
 =\sum_i^{n}{||\overrightarrow{P_i\frac{Q_1+Q_2}{2}}-<\vec{d_i},\overrightarrow{P_i\frac{Q_1+Q_2}{2}}>\vec{d_i}||}
 
 =\mathcal{S}(\frac{Q_1+Q_2}{2})</script><p>$\mathcal{S}(Q)$是凸函数，最多只有一个最小值，因此除去一些特殊情况（直线重合、平行），一般在空间里只存在一个点使得这个点到给定n条直线的距离最小。</p>
-<h1 id="最小值求法"><a href="#最小值求法" class="headerlink" title="最小值求法"></a>最小值求法</h1><p>从直觉上，最小值就是三角化里用最小二乘法得到的方程组的解。方程组的约束是共线约束，而这里是让点到直线的距离最小，其实共线和距离最小其实是等价的，如何证明呢？还得用上叉乘的几何意义。给定一个点$P$，让P、Q和$P+t\vec{d}$共线等价于最小化$\vec{d}\times\overrightarrow{PQ}$，等价于最小化$\vec{d}$和$\overrightarrow{PQ}$组成的平行四边形的面积，等价于最小化Q到直线的距离。</p>
-<h2 id="三角化的求解方式"><a href="#三角化的求解方式" class="headerlink" title="三角化的求解方式"></a>三角化的求解方式</h2><p>设三位空间点的世界坐标为$\mathbf{X}=[x,y,z,1]^T$,归一化平面坐标为$\mathbf{x}=[u,v,1]^T$，$\lambda$为深度值，世界坐标到相机坐标的变换为$\mathbf{T}$,相机的成像模型为</p>
+<h1><span id="最小值求法">最小值求法</span></h1><p>从直觉上，最小值就是三角化里用最小二乘法得到的方程组的解。方程组的约束是共线约束，而这里是让点到直线的距离最小，其实共线和距离最小其实是等价的，如何证明呢？还得用上叉乘的几何意义。给定一个点$P$，让P、Q和$P+t\vec{d}$共线等价于最小化$\vec{d}\times\overrightarrow{PQ}$，等价于最小化$\vec{d}$和$\overrightarrow{PQ}$组成的平行四边形的面积，等价于最小化Q到直线的距离。</p>
+<h2><span id="三角化的求解方式">三角化的求解方式</span></h2><p>设三位空间点的世界坐标为$\mathbf{X}=[x,y,z,1]^T$,归一化平面坐标为$\mathbf{x}=[u,v,1]^T$，$\lambda$为深度值，世界坐标到相机坐标的变换为$\mathbf{T}$,相机的成像模型为</p>
 <script type="math/tex; mode=display">\lambda \mathbf{x}=\mathbf{TX}
 
 \Rightarrow \lambda \mathbf{x}\times\mathbf{TX} = 0</script><p>叉乘可以借助$\mathbf{x}$对应的反对称矩阵表示出来，上面的式子可以简化为一个超定方程组，求解这个方程组即可。</p>
-<h2 id="程序验证"><a href="#程序验证" class="headerlink" title="程序验证"></a>程序验证</h2><p>待完成</p>
+<h2><span id="程序验证">程序验证</span></h2><p>待完成</p>
 
     </div>
 
