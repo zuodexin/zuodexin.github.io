@@ -1,7 +1,7 @@
 ---
 title: 数学问题--求到空间内到n条直线距离和最小的点
 date: 2020-07-26 23:25:19
-tags:
+tags: [slam,cv]
 mathjax: true
 ---
 

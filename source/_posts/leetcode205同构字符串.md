@@ -1,7 +1,7 @@
 ---
 title: leetcode205同构字符串
 date: 2020-11-08 16:28:52
-tags: leetcode
+tags: [leetcode,字符串]
 ---
 
 
@@ -11,7 +11,7 @@ tags: leetcode
 
 注意maker_pair中的类型为引用类型
 
-```
+```c++
 class Solution {
 public:
     bool isIsomorphic(string s, string t) {
