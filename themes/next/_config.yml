@@ -497,7 +497,7 @@ math:
 
   # hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.
   mathjax:
-    enable: false
+    enable: True
 
   # hexo-renderer-markdown-it-plus (or hexo-renderer-markdown-it with markdown-it-katex plugin) required for full Katex support.
   katex:
@@ -882,8 +882,8 @@ vendors:
 
   # MathJax
   # mathjax: //unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-  # mathjax: //cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.5/es5/tex-mml-chtml.js
-  mathjax:
+  mathjax: //cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.5/es5/tex-mml-chtml.js
+  # mathjax:
 
   # KaTeX
   # katex: //unpkg.com/katex@0/dist/katex.min.css
