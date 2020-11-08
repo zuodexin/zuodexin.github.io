@@ -8,7 +8,7 @@ subtitle: '主营cv、推荐类算法，不定期刷题'
 description: '做饭很好吃'
 keywords: '关键词'
 author: Dexin
-language: zh-Hans
+language: zh-CN
 timezone: 'Asia/Shanghai'
 
 # URL
@@ -101,3 +101,9 @@ deploy:
   type: 'git'
   repo: git@github.com:zuodexin/zuodexin.github.io.git
   branch: master
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
