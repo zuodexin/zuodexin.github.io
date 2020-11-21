@@ -22,18 +22,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="万物之始，大道至简，衍化至繁">
-<meta property="og:type" content="website">
-<meta property="og:title" content="算法加油站">
-<meta property="og:url" content="http://yoursite.com/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/index.html">
+  <meta name="description" content="可以用bfs、dfs、和并查集，下面我们用并查集来做，注意：每合并一次朋友圈的数量减1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode547朋友圈">
+<meta property="og:url" content="http://yoursite.com/2020/11/21/leetcode547%E6%9C%8B%E5%8F%8B%E5%9C%88/index.html">
 <meta property="og:site_name" content="算法加油站">
-<meta property="og:description" content="万物之始，大道至简，衍化至繁">
+<meta property="og:description" content="可以用bfs、dfs、和并查集，下面我们用并查集来做，注意：每合并一次朋友圈的数量减1">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-21T13:21:40.000Z">
+<meta property="article:modified_time" content="2020-11-21T13:25:52.902Z">
 <meta property="article:author" content="Dexin">
-<meta property="article:tag" content="关键词">
+<meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/">
+<link rel="canonical" href="http://yoursite.com/2020/11/21/leetcode547%E6%9C%8B%E5%8F%8B%E5%9C%88/">
 
 
 <script class="page-configurations">
@@ -41,12 +43,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: 线段树 | 算法加油站</title>
+  <title>leetcode547朋友圈 | 算法加油站</title>
   
 
 
@@ -268,57 +270,97 @@
       <div class="main-inner">
         
 
-        <div class="content tag">
+        <div class="content post posts-expand">
           
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">线段树
-          <small>标签</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/21/leetcode547%E6%9C%8B%E5%8F%8B%E5%9C%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
+      <meta itemprop="name" content="Dexin">
+      <meta itemprop="description" content="万物之始，大道至简，衍化至繁">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="算法加油站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          leetcode547朋友圈
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-21 21:21:40 / 修改时间：21:25:52" itemprop="dateCreated datePublished" datetime="2020-11-21T21:21:40+08:00">2020-11-21</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+        <p>可以用bfs、dfs、和并查集，下面我们用并查集来做，注意：每合并一次朋友圈的数量减1</p>
+<a id="more"></a>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findCircleNum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; M)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(M.<span class="built_in">size</span>()==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> res = M.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">root</span><span class="params">(M.<span class="built_in">size</span>())</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;M.<span class="built_in">size</span>();i++) root[i] = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;M.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=i;j&lt;M.<span class="built_in">size</span>();j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i==j) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span>(M[i][j]==<span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">int</span> rj = <span class="built_in">find</span>(root,j);</span><br><span class="line">                <span class="keyword">int</span> ri = <span class="built_in">find</span>(root,i);</span><br><span class="line">                <span class="keyword">if</span>(rj!=ri)&#123;</span><br><span class="line">                    res--;</span><br><span class="line">                    root[rj] = ri;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; root,<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> root[i]==i?i:<span class="built_in">find</span>(root,root[i]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>并查集优化技巧,查询时缩短深度<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; root, <span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (i != root[i]) &#123;</span><br><span class="line">            root[i] = root[root[i]];</span><br><span class="line">            i = root[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2020-11-08T21:22:32+08:00"
-              content="2020-11-08">
-          11-08
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/11/08/%E5%8C%BA%E9%97%B4%E5%92%8C/" itemprop="url">
-            <span itemprop="name">区间和</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/21/leetcode785%E5%88%A4%E6%96%AD%E4%BA%8C%E5%88%86%E5%9B%BE/" rel="prev" title="leetcode785判断二分图">
+      <i class="fa fa-chevron-left"></i> leetcode785判断二分图
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
 
         </div>
         
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -413,7 +455,7 @@
 
 
   
-<script src="/js/local-search.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+<script src="/js/local-search.js"></script>
 
 
 
@@ -433,6 +475,25 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '67151d82bbc599163143',
+      clientSecret: '3ab58cb99f7b128be4d977f9e805258c962f134c',
+      repo        : 'zuodexin.github.io',
+      owner       : 'zuodexin',
+      admin       : ['zuodexin'],
+      id          : '7de2586cdb33082250d5db31435f4612',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </body>
 </html>
