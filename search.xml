@@ -226,4 +226,14 @@
         <tag>leetcode</tag>
       </tags>
   </entry>
+  <entry>
+    <title>leetcode477全部汉明距离</title>
+    <url>/2020/11/22/leetcode477%E5%85%A8%E9%83%A8%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/</url>
+    <content><![CDATA[<p>分别统计每一位上0，1的个数，这一位产生的汉明距离就是二者的乘积</p>
+<a id="more"></a>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">totalHammingDistance</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> <span class="built_in">bit</span> = <span class="number">32</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="built_in">bit</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> cnt_0 = <span class="number">0</span>, cnt_1 = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;nums.<span class="built_in">size</span>();j++)&#123;</span><br><span class="line">                <span class="keyword">int</span> num = nums[j];</span><br><span class="line">                <span class="keyword">if</span> (num &amp; ( <span class="number">1</span> &lt;&lt; i ))&#123;</span><br><span class="line">                    cnt_1++;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    cnt_0++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            sum += cnt_0*cnt_1;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
 </search>
