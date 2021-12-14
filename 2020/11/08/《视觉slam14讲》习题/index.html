@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  
+  <link rel="stylesheet" href="/lib/animate-css/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="你知道C++11标准吗？你听说过或者使用过其中的那些特性？有没有其他标准？C++11新特性内容比较多，这要关注一下几点 类型推导auto和decltype关键字的引入，在编译时期推导出变量类型 右值引用一文搞懂引用、指针、const、参数传递的关系 关于绑定的概念 1const int&amp; a &#x3D; 1; 称为把a绑定到1 一文读懂C++右值引用和std::move1234567891011#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《视觉slam14讲》习题整理">
+<meta property="og:url" content="http://yoursite.com/2020/11/08/%E3%80%8A%E8%A7%86%E8%A7%89slam14%E8%AE%B2%E3%80%8B%E4%B9%A0%E9%A2%98/index.html">
+<meta property="og:site_name" content="算法加油站">
+<meta property="og:description" content="你知道C++11标准吗？你听说过或者使用过其中的那些特性？有没有其他标准？C++11新特性内容比较多，这要关注一下几点 类型推导auto和decltype关键字的引入，在编译时期推导出变量类型 右值引用一文搞懂引用、指针、const、参数传递的关系 关于绑定的概念 1const int&amp; a &#x3D; 1; 称为把a绑定到1 一文读懂C++右值引用和std::move1234567891011#">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-08T14:53:12.000Z">
+<meta property="article:modified_time" content="2021-08-21T02:20:28.979Z">
+<meta property="article:author" content="Dexin">
+<meta property="article:tag" content="CV">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://yoursite.com/2020/11/08/%E3%80%8A%E8%A7%86%E8%A7%89slam14%E8%AE%B2%E3%80%8B%E4%B9%A0%E9%A2%98/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>《视觉slam14讲》习题整理 | 算法加油站</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container use-motion">
+    <div class="headband"></div>
+
+    <main class="main">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">算法加油站</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">致力于CV、推荐类算法，不定期刷题</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">11</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间线<span class="badge">24</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">你知道C++11标准吗？你听说过或者使用过其中的那些特性？有没有其他标准？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text">类型推导</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#"><span class="nav-number">1.2.</span> <span class="nav-text">右值引用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#"><span class="nav-number">1.3.</span> <span class="nav-text">列表初始化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#"><span class="nav-number">1.4.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#"><span class="nav-number">1.5.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text">如何在Ubuntu中安装软件？这些软件被安装在什么地方？如果只知道模糊的软件名称，如何安装它？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">3.</span> <span class="nav-text">阅读文献【1】和【14】，你能看懂其中的内容吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">4.</span> <span class="nav-text">g++的命令有哪些？怎么填写参数可以更改生成的程序文件名？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">5.</span> <span class="nav-text">验证四元数旋转某个点后，结果是个虚四元数，所仍然对应到一个三维空间点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">6.</span> <span class="nav-text">画表总结旋转矩阵、轴角、欧拉角、四元数的转换关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">7.</span> <span class="nav-text">有个大的Eigen矩阵，想把它左上角3x3的块取出来赋值为$I_{3\times3}$,编程实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">8.</span> <span class="nav-text">AX&#x3D;b求解有几种方法？在Eigen里实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">9.</span> <span class="nav-text">验证SO(3),SE(3),Sim(3)关于乘法成群</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">10.</span> <span class="nav-text">验证$(R^3,R,\times)$构成李代数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">11.</span> <span class="nav-text">验证$so(3)$ 和$se(3)$ 满足李代数要求的性质</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">12.</span> <span class="nav-text">为什么高斯牛顿方法的增量方程可能不正定？不正定有什么几何含义？为什么在这种情况下解不稳定？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">13.</span> <span class="nav-text">ORB、SIFT、SURF的原理。对比和ORB之间的优劣</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">14.</span> <span class="nav-text">设计程序调用OpenCV其他种类的特征点，统计1000个特征点在你的机器上所用的时间。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">15.</span> <span class="nav-text">研究FLANN为何能快速处理匹配问题。出乱FLANN，还有哪些快速匹配的手段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">16.</span> <span class="nav-text">把演示程序所用的EPnP改成其他PnP方法，并研究他们的工作原理</span></a></li></ol></div>
+      </section>
+      <!--/noindex-->
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Dexin"
+      src="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
+  <p class="site-author-name" itemprop="name">Dexin</p>
+  <div class="site-description" itemprop="description">万物之始，大道至简，衍化至繁</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zuodexin" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zuodexin" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/dexinte@163.com" title="E-Mail → dexinte@163.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      兴趣爱好
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://qingniantuzhai.com/" title="https:&#x2F;&#x2F;qingniantuzhai.com&#x2F;" rel="noopener" target="_blank">青年图摘</a>
+        </li>
+    </ul>
+  </div>
+
+      </section>
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </header>
+
+      
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div id="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+      <div class="main-inner">
+        
+
+        <div class="content post posts-expand">
+          
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/08/%E3%80%8A%E8%A7%86%E8%A7%89slam14%E8%AE%B2%E3%80%8B%E4%B9%A0%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
+      <meta itemprop="name" content="Dexin">
+      <meta itemprop="description" content="万物之始，大道至简，衍化至繁">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="算法加油站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《视觉slam14讲》习题整理
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-11-08 22:53:12" itemprop="dateCreated datePublished" datetime="2020-11-08T22:53:12+08:00">2020-11-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-08-21 10:20:28" itemprop="dateModified" datetime="2021-08-21T10:20:28+08:00">2021-08-21</time>
+              </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4><span id="你知道c11标准吗你听说过或者使用过其中的那些特性有没有其他标准">你知道C++11标准吗？你听说过或者使用过其中的那些特性？有没有其他标准？</span></h4><p><a href="https://cloud.tencent.com/developer/article/1745592#:~:text=%E5%85%B3%E4%BA%8EC%2B%2B11%E6%96%B0,%E6%8E%A8%E5%AF%BC%E5%87%BA%E5%8F%98%E9%87%8F%E7%9A%84%E7%B1%BB%E5%9E%8B%E3%80%82" target="_blank" rel="noopener">C++11新特性</a><br>内容比较多，这要关注一下几点</p>
+<h5><span id="类型推导">类型推导</span></h5><p>auto和decltype关键字的引入，在编译时期推导出变量类型</p>
+<h5><span id="右值引用">右值引用</span></h5><p><a href="https://bbs.huaweicloud.com/blogs/267038" target="_blank" rel="noopener">一文搞懂引用、指针、const、参数传递的关系</a></p>
+<p>关于<code>绑定</code>的概念</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span>&amp; a = <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<p>称为<code>把a绑定到1</code></p>
+<p><a href="https://zhuanlan.zhihu.com/p/335994370" target="_blank" rel="noopener">一文读懂C++右值引用和std::move</a><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> &amp;&amp;ref_a_right = <span class="number">5</span>; <span class="comment">// ok</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">int</span>&amp; a = ref_a_right;</span><br><span class="line"> </span><br><span class="line">    ref_a_right = <span class="number">6</span>; <span class="comment">// 右值引用的用途：可以修改右值</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; a &lt;&lt; <span class="string">"\n"</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>输出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">6</span><br></pre></td></tr></table></figure><br>右值指向左值用<code>std::move</code></p>
+<h5><span id="列表初始化">列表初始化</span></h5><p><a href="https://blog.csdn.net/hailong0715/article/details/54018002" target="_blank" rel="noopener">c++11 列表初始化</a> c++98/03只支持普通数组和POD初始化，现在支持类的列表初始化</p>
+<h5><span id="stdfunction-和lambda表达式"></span></h5><p>std::function 是可调用对象，可以存储</p>
+<ol>
+<li>自由函数</li>
+<li>lambda表达式，<code>[capture list] (params list) mutable exception-&gt; return type { function body }</code>，捕获变量的规则。</li>
+<li>存储bind调用结果，可调用对象和参数绑定，延迟调用</li>
+<li>其他函数调用</li>
+</ol>
+<h5><span id="智能指针"></span></h5><ol>
+<li><code>shared_ptr&lt;T&gt;</code> 和 <code>make_shared&lt;T&gt;</code></li>
+<li><code>unique_ptr&lt;T&gt;</code></li>
+<li><code>week_ptr&lt;T&gt;</code></li>
+</ol>
+<h4><span id="如何在ubuntu中安装软件这些软件被安装在什么地方如果只知道模糊的软件名称如何安装它">如何在Ubuntu中安装软件？这些软件被安装在什么地方？如果只知道模糊的软件名称，如何安装它？</span></h4><p><code>apt-cache search keyword</code></p>
+<h4><span id="阅读文献1和14你能看懂其中的内容吗">阅读文献【1】和【14】，你能看懂其中的内容吗？</span></h4><h4><span id="g的命令有哪些怎么填写参数可以更改生成的程序文件名">g++的命令有哪些？怎么填写参数可以更改生成的程序文件名？</span></h4><p><code>-c</code> 编译</p>
+<p><code>-Ldir</code> 链接搜索库的路径</p>
+<p><code>-static</code> 禁止使用动态库</p>
+<p><code>-O[0,1,2,3]</code> -O0表示没有优化,-O1为缺省值，-O3优化级别最高</p>
+<p><code>-llibrary</code> 制定编译的时候使用的库</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -O output</span><br></pre></td></tr></table></figure>
+<h4><span id="验证四元数旋转某个点后结果是个虚四元数所仍然对应到一个三维空间点">验证四元数旋转某个点后，结果是个虚四元数，所仍然对应到一个三维空间点</span></h4><p>四元数的共轭$q^<em>=(s,-v_q)$<br>四元数的逆 $q^{-1}=q^</em>/||q^*||$<br>单位四元数旋转某个点的公式：$p’=qpq^{-1}$，</p>
+<h4><span id="画表总结旋转矩阵-轴角-欧拉角-四元数的转换关系">画表总结旋转矩阵、轴角、欧拉角、四元数的转换关系</span></h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>旋转矩阵</th>
+<th>轴角</th>
+<th>欧拉角</th>
+<th>四元数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>旋转矩阵</td>
+<td>-</td>
+<td>罗德里格斯公式两边求迹</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>轴角</td>
+<td>$R=\cos{\theta}\mathbf{I}+(1-\cos{\theta})\mathbf{n}\mathbf{n}^T)+\sin{\theta}\mathbf{n}^{\wedge}$</td>
+<td>-</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>欧拉角</td>
+<td>矩阵连乘</td>
+<td></td>
+<td>-</td>
+<td></td>
+</tr>
+<tr>
+<td>四元数</td>
+<td>$R=\mathcal{v}\mathcal{v}^T+s^2I+2sv^{\wedge}+(v^{\wedge})^2$</td>
+<td>左式求迹</td>
+<td></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><a href="https://zhuanlan.zhihu.com/p/45404840" target="_blank" rel="noopener">三维旋转：欧拉角、四元数、旋转矩阵、轴角之间的转换</a></p>
+<h4><span id="有个大的eigen矩阵想把它左上角3x3的块取出来赋值为i_3times3编程实现">有个大的Eigen矩阵，想把它左上角3x3的块取出来赋值为$I_{3\times3}$,编程实现</span></h4><p>关键的类MatrixXd,MatrixXf，成员方法block，类方法Random，Identity<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;Eigen/Core&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Eigen;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* code */</span></span><br><span class="line">    MatrixXd m=MatrixXd::Random(<span class="number">9</span>,<span class="number">9</span>);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"before assign"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;m&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    m.block(<span class="number">0</span>,<span class="number">0</span>,<span class="number">3</span>,<span class="number">3</span>) = Matrix3d::Identity();</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"after assign"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;m&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4><span id="axb求解有几种方法在eigen里实现">AX=b求解有几种方法？在Eigen里实现</span></h4><ul>
+<li>QR分解，LU分解</li>
+<li>SVD分解的优点</li>
+<li>理解广义逆求解</li>
+<li>理解SVD求解推导</li>
+</ul>
+<h4><span id="验证so3se3sim3关于乘法成群">验证SO(3),SE(3),Sim(3)关于乘法成群</span></h4><h4><span id="验证r3rtimes构成李代数">验证$(R^3,R,\times)$构成李代数</span></h4><h4><span id="验证so3-和se3-满足李代数要求的性质">验证$so(3)$ 和$se(3)$ 满足李代数要求的性质</span></h4><h4><span id="为什么高斯牛顿方法的增量方程可能不正定不正定有什么几何含义为什么在这种情况下解不稳定">为什么高斯牛顿方法的增量方程可能不正定？不正定有什么几何含义？为什么在这种情况下解不稳定？</span></h4><h4><span id="orb-sift-surf的原理-对比和orb之间的优劣">ORB、SIFT、SURF的原理。对比和ORB之间的优劣</span></h4><h4><span id="设计程序调用opencv其他种类的特征点统计1000个特征点在你的机器上所用的时间">设计程序调用OpenCV其他种类的特征点，统计1000个特征点在你的机器上所用的时间。</span></h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;chrono&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/core/core.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/features2d/features2d.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/xfeatures2d.hpp&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;opencv2/highgui/highgui.hpp&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_usage</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"usage: [executable] [sift|orb] num_features path_to_image"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">imageTest</span><span class="params">(cv::Mat&amp; <span class="built_in">image</span>)</span></span>&#123;</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"width:"</span>&lt;&lt;<span class="built_in">image</span>.cols&lt;&lt;<span class="string">" height:"</span>&lt;&lt;<span class="built_in">image</span>.rows&lt;&lt;<span class="string">" channels:"</span>&lt;&lt;<span class="built_in">image</span>.channels()&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    cv::imshow(<span class="string">"image"</span>,<span class="built_in">image</span>);</span><br><span class="line">    cv::waitKey(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    chrono::steady_clock::time_point t1 = chrono::steady_clock::now();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">size_t</span> y = <span class="number">0</span>; y &lt; <span class="built_in">image</span>.rows; y++)&#123;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">char</span>* row_ptr = <span class="built_in">image</span>.ptr&lt;<span class="keyword">unsigned</span> <span class="keyword">char</span>&gt;(y);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">size_t</span> x = <span class="number">0</span>; x &lt; <span class="built_in">image</span>.cols; x++)&#123;</span><br><span class="line">            <span class="keyword">unsigned</span> <span class="keyword">char</span>* data_ptr = &amp;row_ptr[x*<span class="built_in">image</span>.channels()];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">size_t</span> c = <span class="number">0</span>; c &lt; <span class="built_in">image</span>.channels(); c++)&#123;</span><br><span class="line">                <span class="keyword">unsigned</span> <span class="keyword">char</span> data = data_ptr[c];</span><br><span class="line">                <span class="keyword">if</span>(c==<span class="number">0</span>)&#123;</span><br><span class="line">                    data_ptr[c] = <span class="built_in">min</span>(data_ptr[c]+<span class="number">100</span>,<span class="number">255</span>) ;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    chrono::steady_clock::time_point t2 = chrono::steady_clock::now();</span><br><span class="line">    chrono::duration&lt;<span class="keyword">double</span>&gt; timeCost = chrono::duration_cast&lt;chrono::duration&lt;<span class="keyword">double</span>&gt;&gt;(t2-t1);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"time cost: "</span>&lt;&lt;timeCost.count()&lt;&lt;<span class="string">"seconds"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    cv::imshow(<span class="string">"image"</span>,<span class="built_in">image</span>);</span><br><span class="line">    cv::waitKey(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    cv::Mat maskedImage = <span class="built_in">image</span>;</span><br><span class="line">    maskedImage(cv::Rect(<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>)).setTo(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    cv::imshow(<span class="string">"masked image"</span>,<span class="built_in">image</span>);</span><br><span class="line">    cv::waitKey(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    cv::Mat imageClone = <span class="built_in">image</span>.clone();</span><br><span class="line">    imageClone(cv::Rect(<span class="number">0</span>,<span class="number">0</span>,<span class="number">100</span>,<span class="number">100</span>)).setTo(<span class="number">255</span>);</span><br><span class="line"></span><br><span class="line">    cv::imshow(<span class="string">"image"</span>,<span class="built_in">image</span>);</span><br><span class="line">    cv::imshow(<span class="string">"image clone"</span>,imageClone);</span><br><span class="line">    cv::waitKey(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getDetector</span><span class="params">(cv::Ptr&lt;cv::FeatureDetector&gt;&amp; detector,cv::Ptr&lt;cv::DescriptorExtractor&gt;&amp; extractor,<span class="built_in">string</span> name,<span class="keyword">int</span> num_feature)</span></span>&#123;</span><br><span class="line">    transform(name.<span class="built_in">begin</span>(),name.<span class="built_in">end</span>(),name.<span class="built_in">begin</span>(),::<span class="built_in">toupper</span>);</span><br><span class="line">    <span class="keyword">if</span>(name==<span class="string">"ORB"</span>)&#123;</span><br><span class="line">        detector = cv::ORB::create(num_feature);</span><br><span class="line">        extractor = cv::ORB::create(num_feature);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(name==<span class="string">"SIFT"</span>)&#123;</span><br><span class="line">        detector = cv::SIFT::create(num_feature);</span><br><span class="line">        extractor = cv::SIFT::create(num_feature);</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span> (name==<span class="string">"SURF"</span>)&#123;</span><br><span class="line">       detector = cv::xfeatures2d::SURF::create();</span><br><span class="line">       extractor = cv::xfeatures2d::SURF::create();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">ostringstream</span> oss;</span><br><span class="line">        oss&lt;&lt;<span class="string">"not supported feature "</span>&lt;&lt; name &lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">throw</span> invalid_argument(oss.str());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">featureExtraction</span><span class="params">(cv::Mat&amp; <span class="built_in">image</span>,<span class="built_in">string</span> algo,<span class="keyword">int</span> num_features)</span></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;cv::KeyPoint&gt; keyPoints;</span><br><span class="line">    cv::Mat descriptors;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    cv::Ptr&lt;cv::FeatureDetector&gt; detector;</span><br><span class="line">    cv::Ptr&lt;cv::DescriptorExtractor&gt; descriptor;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    getDetector(detector,descriptor,algo,num_features);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    chrono::steady_clock::time_point t1 = chrono::steady_clock::now();</span><br><span class="line">    detector-&gt;detect(<span class="built_in">image</span>,keyPoints);</span><br><span class="line"></span><br><span class="line">    descriptor-&gt;compute(<span class="built_in">image</span>,keyPoints,descriptors);</span><br><span class="line"></span><br><span class="line">    chrono::steady_clock::time_point t2 = chrono::steady_clock::now();</span><br><span class="line">    chrono::milliseconds timeCost = chrono::duration_cast&lt;chrono::milliseconds&gt;(t2-t1);</span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"time cost:"</span>&lt;&lt;timeCost.count()&lt;&lt;<span class="string">"ms"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    cv::Mat detectOutput;</span><br><span class="line">    cv::drawKeypoints(<span class="built_in">image</span>,keyPoints,detectOutput,cv::Scalar::all(<span class="number">-1</span>),cv::DrawMatchesFlags::<span class="literal">DEFAULT</span>);</span><br><span class="line">    cv::imshow(<span class="string">"detect result"</span>,detectOutput);</span><br><span class="line">    cv::waitKey(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span>&lt;&lt;<span class="string">"key point size:"</span>&lt;&lt;keyPoints.<span class="built_in">size</span>()&lt;&lt;<span class="string">" descriptor size"</span>&lt;&lt;descriptors.<span class="built_in">size</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> <span class="keyword">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(argc!=<span class="number">4</span>)&#123;</span><br><span class="line">        print_usage();</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* algo = argv[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">int</span> num_features = atoi(argv[<span class="number">2</span>]);</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">char</span>* file = argv[<span class="number">3</span>];</span><br><span class="line">    cv::Mat <span class="built_in">image</span>;</span><br><span class="line">    <span class="built_in">image</span> = cv::imread(file);</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">image</span>.data==<span class="literal">nullptr</span>)&#123;</span><br><span class="line">        <span class="built_in">cerr</span>&lt;&lt;<span class="string">"文件"</span>&lt;&lt;file&lt;&lt;<span class="string">"不存在"</span>&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// imageTest(image);</span></span><br><span class="line"></span><br><span class="line">    featureExtraction(<span class="built_in">image</span>,algo,num_features);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4><span id="研究flann为何能快速处理匹配问题-出乱flann还有哪些快速匹配的手段">研究FLANN为何能快速处理匹配问题。出乱FLANN，还有哪些快速匹配的手段</span></h4><h4><span id="把演示程序所用的epnp改成其他pnp方法并研究他们的工作原理">把演示程序所用的EPnP改成其他PnP方法，并研究他们的工作原理</span></h4><a id="more"></a>
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CV/" rel="tag"># CV</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/08/attention%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" rel="prev" title="attention机制原理与应用">
+      <i class="fa fa-chevron-left"></i> attention机制原理与应用
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/08/%E3%80%8A%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A6%81%E7%82%B9%E6%A2%B3%E7%90%86/" rel="next" title="《强化学习》要点梳理">
+      《强化学习》要点梳理 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+        </div>
+        
+    <div class="comments" id="gitalk-container"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Dexin</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      const script = document.createElement('script');
+      script.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/3.0.5/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '67151d82bbc599163143',
+      clientSecret: '3ab58cb99f7b128be4d977f9e805258c962f134c',
+      repo        : 'zuodexin.github.io',
+      owner       : 'zuodexin',
+      admin       : ['zuodexin'],
+      id          : '79fef115cc4ceac6c6058ce180bfef89',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</body>
+</html>

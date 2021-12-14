@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="待完成">
+  <meta name="description" content="BFS + 状态压缩1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071class Solution &amp;#123;private:    static constexpr int  di">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《视觉slam14讲》要点梳理">
-<meta property="og:url" content="http://yoursite.com/2020/11/08/%E3%80%8A%E8%A7%86%E8%A7%89slam14%E8%AE%B2%E3%80%8B%E8%A6%81%E7%82%B9%E6%A2%B3%E7%90%86/index.html">
+<meta property="og:title" content="leetcode转化为全零矩阵的最少反转次数">
+<meta property="og:url" content="http://yoursite.com/2021/12/14/leetcode%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%85%A8%E9%9B%B6%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%91%E5%8F%8D%E8%BD%AC%E6%AC%A1%E6%95%B0/index.html">
 <meta property="og:site_name" content="算法加油站">
-<meta property="og:description" content="待完成">
+<meta property="og:description" content="BFS + 状态压缩1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071class Solution &amp;#123;private:    static constexpr int  di">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-08T14:53:12.000Z">
-<meta property="article:modified_time" content="2020-11-08T15:01:00.812Z">
+<meta property="article:published_time" content="2021-12-14T14:18:01.434Z">
+<meta property="article:modified_time" content="2021-12-14T14:20:06.373Z">
 <meta property="article:author" content="Dexin">
-<meta property="article:tag" content="CV">
+<meta property="article:tag" content="关键词">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/11/08/%E3%80%8A%E8%A7%86%E8%A7%89slam14%E8%AE%B2%E3%80%8B%E8%A6%81%E7%82%B9%E6%A2%B3%E7%90%86/">
+<link rel="canonical" href="http://yoursite.com/2021/12/14/leetcode%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%85%A8%E9%9B%B6%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%91%E5%8F%8D%E8%BD%AC%E6%AC%A1%E6%95%B0/">
 
 
 <script class="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>《视觉slam14讲》要点梳理 | 算法加油站</title>
+  <title>leetcode转化为全零矩阵的最少反转次数 | 算法加油站</title>
   
 
 
@@ -115,7 +115,7 @@
       <h1 class="site-title">算法加油站</h1>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">致力于cv、推荐类算法，不定期刷题</p>
+      <p class="site-subtitle" itemprop="description">致力于CV、推荐类算法，不定期刷题</p>
   </div>
 
   <div class="site-nav-right">
@@ -141,7 +141,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间线<span class="badge">23</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间线<span class="badge">24</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -188,7 +188,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -200,6 +200,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">BFS + 状态压缩</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -215,7 +216,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -277,7 +278,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/08/%E3%80%8A%E8%A7%86%E8%A7%89slam14%E8%AE%B2%E3%80%8B%E8%A6%81%E7%82%B9%E6%A2%B3%E7%90%86/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/14/leetcode%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%85%A8%E9%9B%B6%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%91%E5%8F%8D%E8%BD%AC%E6%AC%A1%E6%95%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
@@ -290,7 +291,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          《视觉slam14讲》要点梳理
+          leetcode转化为全零矩阵的最少反转次数
         </h1>
 
         <div class="post-meta">
@@ -301,7 +302,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-11-08 22:53:12 / 修改时间：23:01:00" itemprop="dateCreated datePublished" datetime="2020-11-08T22:53:12+08:00">2020-11-08</time>
+              <time title="创建时间：2021-12-14 22:18:01 / 修改时间：22:20:06" itemprop="dateCreated datePublished" datetime="2021-12-14T22:18:01+08:00">2021-12-14</time>
             </span>
 
           
@@ -322,8 +323,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>待完成<br><a id="more"></a></p>
-
+        <h4><span id="bfs-状态压缩">BFS + 状态压缩</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">private:</span><br><span class="line">    static constexpr int  dirs[5][2] &#x3D;&#123;&#123;0,1&#125;,&#123;0,-1&#125;,&#123;-1,0&#125;,&#123;1,0&#125;,&#123;0,0&#125;&#125;;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line"></span><br><span class="line">    int encode(vector&lt;vector&lt;int&gt;&gt;&amp; mat) &#123;</span><br><span class="line">        int state&#x3D;0;</span><br><span class="line">        for(int i&#x3D;0;i&lt;mat.size();i++)&#123;</span><br><span class="line">            for(int j&#x3D;0;j&lt;mat[i].size();j++)&#123;</span><br><span class="line">                state&lt;&lt;&#x3D;1;</span><br><span class="line">                state +&#x3D; mat[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int encode_mask(int row,int col,int m,int n)&#123;</span><br><span class="line">        int pos &#x3D; m*n-(row*n+col+1);</span><br><span class="line">        return 1&lt;&lt;pos;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int convert(int state,int row,int col,int m,int n)&#123;</span><br><span class="line">        for(int k&#x3D;0;k&lt;5;k++)&#123;</span><br><span class="line">            int r0&#x3D;row+dirs[k][0],c0&#x3D;col+dirs[k][1];</span><br><span class="line">            if (r0&gt;&#x3D;0 &amp;&amp; r0&lt;m &amp;&amp; c0&gt;&#x3D;0 &amp;&amp; c0&lt;n)&#123;</span><br><span class="line">                int mask &#x3D; encode_mask(r0,c0,m,n);</span><br><span class="line">                state ^&#x3D; mask;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void printState(int state)&#123;</span><br><span class="line">        std::bitset&lt;4&gt; s(state);</span><br><span class="line">        cout&lt;&lt;s&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int minFlips(vector&lt;vector&lt;int&gt;&gt;&amp; mat) &#123;</span><br><span class="line">        int init_state &#x3D; encode(mat);</span><br><span class="line">        if(init_state&#x3D;&#x3D;0) return 0;</span><br><span class="line">        unordered_set&lt;int&gt; seen;</span><br><span class="line">        queue&lt;int&gt; q;</span><br><span class="line">        q.push(init_state);</span><br><span class="line">        seen.insert(init_state);</span><br><span class="line">        int m &#x3D; mat.size();</span><br><span class="line">        int n &#x3D; mat[0].size();</span><br><span class="line">        int step&#x3D;0;</span><br><span class="line">        while(!q.empty())&#123;</span><br><span class="line">            ++step;</span><br><span class="line">            int k&#x3D;q.size();</span><br><span class="line">            for(int _&#x3D;0;_&lt;k;_++)&#123;</span><br><span class="line">                int state0 &#x3D; q.front();</span><br><span class="line">                q.pop();</span><br><span class="line">                for(int i&#x3D;0;i&lt;m;i++)&#123;</span><br><span class="line">                    for(int j&#x3D;0;j&lt;n;j++)&#123;</span><br><span class="line">                        int state1 &#x3D; convert(state0,i,j,m,n);</span><br><span class="line">                        if(!seen.count(state1))&#123;</span><br><span class="line">                            seen.insert(state1);</span><br><span class="line">                            q.push(state1);</span><br><span class="line">                        &#125;</span><br><span class="line">                        if(state1&#x3D;&#x3D;0)&#123;</span><br><span class="line">                            return step;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -331,9 +331,6 @@
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/CV/" rel="tag"># CV</a>
-          </div>
 
         
 
@@ -341,13 +338,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/11/08/attention%E6%9C%BA%E5%88%B6%E5%8E%9F%E7%90%86%E4%B8%8E%E5%BA%94%E7%94%A8/" rel="prev" title="attention机制原理与应用">
-      <i class="fa fa-chevron-left"></i> attention机制原理与应用
+    <a href="/2020/11/22/leetcode886%E5%88%86%E4%B8%A4%E7%BB%84/" rel="prev" title="leetcode886分两组">
+      <i class="fa fa-chevron-left"></i> leetcode886分两组
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/11/08/%E3%80%8A%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E3%80%8B%E8%A6%81%E7%82%B9%E6%A2%B3%E7%90%86/" rel="next" title="《强化学习》要点梳理">
-      《强化学习》要点梳理 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -396,7 +390,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2020</span>
+  <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -486,7 +480,7 @@ NexT.utils.loadComments('#gitalk-container', () => {
       repo        : 'zuodexin.github.io',
       owner       : 'zuodexin',
       admin       : ['zuodexin'],
-      id          : '17d1c6d9caadf2287d31fe450a0c47c2',
+      id          : '9911adf8a4b5d08daeea46bd63e8ef23',
         language: 'zh-CN',
       distractionFreeMode: true
     });
