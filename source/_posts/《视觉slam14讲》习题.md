@@ -148,8 +148,145 @@ int main(int argc, char const *argv[])
 #### ORB、SIFT、SURF的原理。对比和ORB之间的优劣
 
 
-
 #### 设计程序调用OpenCV其他种类的特征点，统计1000个特征点在你的机器上所用的时间。
+
+```c++
+#include<iostream>
+#include<chrono>
+#include<algorithm>
+
+
+#include <opencv2/core/core.hpp>
+#include <opencv2/features2d/features2d.hpp>
+#include <opencv2/xfeatures2d.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+using namespace std;
+
+
+void print_usage(){
+    cout<<"usage: [executable] [sift|orb] num_features path_to_image"<<endl;
+}
+
+void imageTest(cv::Mat& image){
+    cout<<"width:"<<image.cols<<" height:"<<image.rows<<" channels:"<<image.channels()<<endl;
+
+    cv::imshow("image",image);
+    cv::waitKey(0);
+
+    chrono::steady_clock::time_point t1 = chrono::steady_clock::now();
+
+    for (size_t y = 0; y < image.rows; y++){
+        unsigned char* row_ptr = image.ptr<unsigned char>(y);
+        for (size_t x = 0; x < image.cols; x++){
+            unsigned char* data_ptr = &row_ptr[x*image.channels()];
+            for (size_t c = 0; c < image.channels(); c++){
+                unsigned char data = data_ptr[c];
+                if(c==0){
+                    data_ptr[c] = min(data_ptr[c]+100,255) ;
+                }
+            }
+        }
+    }
+    chrono::steady_clock::time_point t2 = chrono::steady_clock::now();
+    chrono::duration<double> timeCost = chrono::duration_cast<chrono::duration<double>>(t2-t1);
+    cout<<"time cost: "<<timeCost.count()<<"seconds"<<endl;
+
+    cv::imshow("image",image);
+    cv::waitKey(0);
+
+    cv::Mat maskedImage = image;
+    maskedImage(cv::Rect(0,0,100,100)).setTo(0);
+
+    cv::imshow("masked image",image);
+    cv::waitKey(0);
+
+    cv::Mat imageClone = image.clone();
+    imageClone(cv::Rect(0,0,100,100)).setTo(255);
+
+    cv::imshow("image",image);
+    cv::imshow("image clone",imageClone);
+    cv::waitKey(0);
+}
+
+
+void getDetector(cv::Ptr<cv::FeatureDetector>& detector,cv::Ptr<cv::DescriptorExtractor>& extractor,string name,int num_feature){
+    transform(name.begin(),name.end(),name.begin(),::toupper);
+    if(name=="ORB"){
+        detector = cv::ORB::create(num_feature);
+        extractor = cv::ORB::create(num_feature);
+    }else if(name=="SIFT"){
+        detector = cv::SIFT::create(num_feature);
+        extractor = cv::SIFT::create(num_feature);
+    }else if (name=="SURF"){
+       detector = cv::xfeatures2d::SURF::create();
+       extractor = cv::xfeatures2d::SURF::create();
+    }
+    else{
+        ostringstream oss;
+        oss<<"not supported feature "<< name <<endl;
+        throw invalid_argument(oss.str());
+    }
+}
+
+
+
+void featureExtraction(cv::Mat& image,string algo,int num_features){
+    vector<cv::KeyPoint> keyPoints;
+    cv::Mat descriptors;
+
+
+    cv::Ptr<cv::FeatureDetector> detector;
+    cv::Ptr<cv::DescriptorExtractor> descriptor;
+
+
+    getDetector(detector,descriptor,algo,num_features);
+
+
+    chrono::steady_clock::time_point t1 = chrono::steady_clock::now();
+    detector->detect(image,keyPoints);
+
+    descriptor->compute(image,keyPoints,descriptors);
+
+    chrono::steady_clock::time_point t2 = chrono::steady_clock::now();
+    chrono::milliseconds timeCost = chrono::duration_cast<chrono::milliseconds>(t2-t1);
+    cout<<"time cost:"<<timeCost.count()<<"ms"<<endl;
+
+
+    cv::Mat detectOutput;
+    cv::drawKeypoints(image,keyPoints,detectOutput,cv::Scalar::all(-1),cv::DrawMatchesFlags::DEFAULT);
+    cv::imshow("detect result",detectOutput);
+    cv::waitKey(0);
+
+    cout<<"key point size:"<<keyPoints.size()<<" descriptor size"<<descriptors.size<<endl;
+
+}
+
+
+int main(int argc, char const *argv[])
+{
+    if(argc!=4){
+        print_usage();
+        return 0;
+    }
+    const char* algo = argv[1];
+    int num_features = atoi(argv[2]);
+    const char* file = argv[3];
+    cv::Mat image;
+    image = cv::imread(file);
+    if (image.data==nullptr){
+        cerr<<"文件"<<file<<"不存在"<<endl;
+        return 0;
+    }
+    
+    // imageTest(image);
+
+    featureExtraction(image,algo,num_features);
+
+    return 0;
+}
+
+```
 
 
 #### 研究FLANN为何能快速处理匹配问题。出乱FLANN，还有哪些快速匹配的手段
