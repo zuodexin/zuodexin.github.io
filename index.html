@@ -139,7 +139,7 @@
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间线<span class="badge">25</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间线<span class="badge">26</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -213,7 +213,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">25</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -270,6 +270,65 @@
 
         <div class="content index posts-expand">
           
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/22/%E9%87%8D%E5%A4%8D%E5%8F%A0%E5%8A%A0%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
+      <meta itemprop="name" content="Dexin">
+      <meta itemprop="description" content="万物之始，大道至简，衍化至繁">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="算法加油站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/22/%E9%87%8D%E5%A4%8D%E5%8F%A0%E5%8A%A0%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" class="post-title-link" itemprop="url">重复叠加字符串匹配</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-22 23:43:04 / 修改时间：23:44:50" itemprop="dateCreated datePublished" datetime="2021-12-22T23:43:04+08:00">2021-12-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4><span id="重复叠加字符串匹配">重复叠加字符串匹配</span></h4><p>kmp的时候有个颠倒，要明白谁匹配谁</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">strStr</span><span class="params">(<span class="built_in">string</span> haystack,<span class="built_in">string</span> needle)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> m=haystack.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> n=needle.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">pi</span><span class="params">(n,<span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">while</span>(j&gt;<span class="number">0</span> &amp;&amp; needle[i]!=needle[j])</span><br><span class="line">                j = pi[j<span class="number">-1</span>];</span><br><span class="line">            <span class="keyword">if</span>(needle[i]==needle[j])</span><br><span class="line">                j++;</span><br><span class="line">            pi[i] = j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>;i-j&lt;m;i++)&#123;</span><br><span class="line">            <span class="keyword">while</span>(j&gt;<span class="number">0</span> &amp;&amp; haystack[i%m]!=needle[j])</span><br><span class="line">                j = pi[j<span class="number">-1</span>];</span><br><span class="line">            <span class="keyword">if</span>(haystack[i%m]==needle[j])</span><br><span class="line">                j++;</span><br><span class="line">            <span class="keyword">if</span>(j==n)&#123;</span><br><span class="line">                <span class="keyword">return</span> i-n+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">repeatedStringMatch</span><span class="params">(<span class="built_in">string</span> a, <span class="built_in">string</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(b.<span class="built_in">size</span>()==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> index = strStr(a,b);</span><br><span class="line">        <span class="keyword">if</span>(index==<span class="number">-1</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">int</span> an = a.<span class="built_in">size</span>(),bn=b.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">ceil</span>((index+bn)*<span class="number">1.0</span>/an);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -825,72 +884,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/11/21/leetcode863%E8%B7%9D%E7%A6%BB%E4%B8%BAK%E7%9A%84%E6%89%80%E6%9C%89%E4%BA%8C%E5%8F%89%E6%A0%91%E8%8A%82%E7%82%B9/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/21/leetcode547%E6%9C%8B%E5%8F%8B%E5%9C%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
-      <meta itemprop="name" content="Dexin">
-      <meta itemprop="description" content="万物之始，大道至简，衍化至繁">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="算法加油站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/21/leetcode547%E6%9C%8B%E5%8F%8B%E5%9C%88/" class="post-title-link" itemprop="url">leetcode547朋友圈</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-11-21 21:21:40 / 修改时间：21:25:52" itemprop="dateCreated datePublished" datetime="2020-11-21T21:21:40+08:00">2020-11-21</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>可以用bfs、dfs、和并查集，下面我们用并查集来做，注意：每合并一次朋友圈的数量减1</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/21/leetcode547%E6%9C%8B%E5%8F%8B%E5%9C%88/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
