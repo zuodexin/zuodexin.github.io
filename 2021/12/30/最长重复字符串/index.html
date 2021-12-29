@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="回溯法求解">
+  <meta name="description" content="最长重复子串二分+字符串哈希，要记住二分的模版&amp;m&#x3D;1) 理解字符串哈希的原理 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#define MAXN 31000typedef unsigned long long ll;class Solution &amp;#12">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode698拆分k个和相等的子集合">
-<meta property="og:url" content="http://yoursite.com/2020/11/17/leetcode698%E6%8B%86%E5%88%86k%E4%B8%AA%E5%92%8C%E7%9B%B8%E7%AD%89%E7%9A%84%E5%AD%90%E9%9B%86%E5%90%88/index.html">
+<meta property="og:title" content="最长重复字符串">
+<meta property="og:url" content="http://yoursite.com/2021/12/30/%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
 <meta property="og:site_name" content="算法加油站">
-<meta property="og:description" content="回溯法求解">
+<meta property="og:description" content="最长重复子串二分+字符串哈希，要记住二分的模版&amp;m&#x3D;1) 理解字符串哈希的原理 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849#define MAXN 31000typedef unsigned long long ll;class Solution &amp;#12">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-17T13:56:39.000Z">
-<meta property="article:modified_time" content="2020-11-17T13:59:37.575Z">
+<meta property="article:published_time" content="2021-12-29T16:16:38.470Z">
+<meta property="article:modified_time" content="2021-12-29T16:20:37.772Z">
 <meta property="article:author" content="Dexin">
-<meta property="article:tag" content="leetcode">
+<meta property="article:tag" content="关键词">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/11/17/leetcode698%E6%8B%86%E5%88%86k%E4%B8%AA%E5%92%8C%E7%9B%B8%E7%AD%89%E7%9A%84%E5%AD%90%E9%9B%86%E5%90%88/">
+<link rel="canonical" href="http://yoursite.com/2021/12/30/%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E4%B8%B2/">
 
 
 <script class="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>leetcode698拆分k个和相等的子集合 | 算法加油站</title>
+  <title>最长重复字符串 | 算法加油站</title>
   
 
 
@@ -188,7 +188,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -200,6 +200,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">最长重复子串</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -277,7 +278,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/17/leetcode698%E6%8B%86%E5%88%86k%E4%B8%AA%E5%92%8C%E7%9B%B8%E7%AD%89%E7%9A%84%E5%AD%90%E9%9B%86%E5%90%88/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/30/%E6%9C%80%E9%95%BF%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E4%B8%B2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
@@ -290,7 +291,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          leetcode698拆分k个和相等的子集合
+          最长重复字符串
         </h1>
 
         <div class="post-meta">
@@ -301,7 +302,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-11-17 21:56:39 / 修改时间：21:59:37" itemprop="dateCreated datePublished" datetime="2020-11-17T21:56:39+08:00">2020-11-17</time>
+              <time title="创建时间：2021-12-30 00:16:38 / 修改时间：00:20:37" itemprop="dateCreated datePublished" datetime="2021-12-30T00:16:38+08:00">2021-12-30</time>
             </span>
 
           
@@ -322,9 +323,9 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>回溯法求解</p>
-<a id="more"></a>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canPartitionKSubsets</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(nums.<span class="built_in">size</span>()&lt;k)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            sum+=nums[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(sum%k!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">subsets</span><span class="params">(k,<span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt; <span class="title">picked</span><span class="params">(nums.<span class="built_in">size</span>(),<span class="literal">false</span>)</span></span>;</span><br><span class="line">        <span class="built_in">std</span>::sort(nums.<span class="built_in">begin</span>(),nums.<span class="built_in">end</span>(),<span class="built_in">std</span>::greater&lt;<span class="keyword">int</span>&gt;());</span><br><span class="line">        <span class="keyword">return</span> helper(nums,k,subsets,picked,sum/k);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">helper</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums,<span class="keyword">int</span> k,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp;subsets,<span class="built_in">vector</span>&lt;<span class="keyword">bool</span>&gt;&amp;picked,<span class="keyword">int</span> s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!picked[i])&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;subsets.<span class="built_in">size</span>();j++)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(subsets[j]+nums[i]&lt;=s)&#123;</span><br><span class="line">                        picked[i] = <span class="literal">true</span>;</span><br><span class="line">                        subsets[j] += nums[i];</span><br><span class="line">                        <span class="comment">// printf("nums[%d]:%d subsets[%d]:%d\n",i,nums[i],j,subsets[j]);</span></span><br><span class="line">                        <span class="keyword">if</span>(helper(nums,k,subsets,picked,s))</span><br><span class="line">                            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                        <span class="keyword">else</span>&#123;</span><br><span class="line">                            picked[i] = <span class="literal">false</span>;</span><br><span class="line">                            subsets[j] -= nums[i];</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+        <h4><span id="最长重复子串">最长重复子串</span></h4><p>二分+字符串哈希，要记住<a href="https://irgb1900.blogspot.com/2020/02/lowerbound-upperbound-binarysearch_24.html?utm_source=feedburner&amp;utm_medium=feed&amp;utm_campaign=Feed:+Irgb+(irgb" target="_blank" rel="noopener">二分的模版</a>&amp;m=1)</p>
+<p>理解<a href="https://oi-wiki.org/string/hash/" target="_blank" rel="noopener">字符串哈希的原理</a></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 31000</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">longestDupSubstring</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(s.<span class="built_in">size</span>()==<span class="number">0</span>) <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        ll h[MAXN]&#123;<span class="number">0</span>&#125;,p[MAXN]&#123;<span class="number">1</span>&#125;;</span><br><span class="line">        ll n = s.<span class="built_in">size</span>();</span><br><span class="line">        ll P=<span class="number">131</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            h[i] = h[i<span class="number">-1</span>] *P + (s[i<span class="number">-1</span>]-<span class="string">'a'</span>);</span><br><span class="line">            p[i] = p[i<span class="number">-1</span>]*P;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> l=<span class="number">1</span>,r=n;</span><br><span class="line">        <span class="built_in">string</span> ans=<span class="string">""</span>;</span><br><span class="line">        <span class="keyword">while</span>(r&gt;l)&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = l+(r-l)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> idx = check(s,h,p,P,mid);</span><br><span class="line">            <span class="comment">//cout&lt;&lt;mid&lt;&lt;" "&lt;&lt;dup&lt;&lt;endl;</span></span><br><span class="line">            <span class="keyword">if</span>(idx)&#123;</span><br><span class="line">                l = mid+<span class="number">1</span>;</span><br><span class="line">                ans = s.substr(idx<span class="number">-1</span>,mid);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                r = mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">check</span><span class="params">(<span class="built_in">string</span>&amp; s,ll h[],ll p[],ll P,<span class="keyword">int</span> l)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="built_in">unordered_set</span>&lt;ll&gt; st;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i+l<span class="number">-1</span>&lt;n;i++)&#123;</span><br><span class="line">            ll hash = h[i+l]-h[i]*p[l];</span><br><span class="line">            <span class="comment">// cout&lt;&lt;"h[i]:"&lt;&lt;h[i]&lt;&lt;",h[i+l]:"&lt;&lt;h[i+l]&lt;&lt;",p[l]:"&lt;&lt;p[i]&lt;&lt;endl;</span></span><br><span class="line">            <span class="comment">// cout&lt;&lt;"i:"&lt;&lt;i&lt;&lt;","&lt;&lt;s.substr(i,l)&lt;&lt;" hash:"&lt;&lt;hash&lt;&lt;endl;</span></span><br><span class="line">            <span class="keyword">if</span>(st.count(hash))&#123;</span><br><span class="line">                <span class="keyword">return</span> i+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            st.insert(hash);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -332,9 +333,6 @@
     
 
       <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/leetcode/" rel="tag"># leetcode</a>
-          </div>
 
         
 
@@ -342,13 +340,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/11/09/leetcode179%E7%BB%84%E5%90%88%E4%B8%BA%E6%9C%80%E5%A4%A7%E7%9A%84%E6%95%B0/" rel="prev" title="leetcode179组合为最大的数">
-      <i class="fa fa-chevron-left"></i> leetcode179组合为最大的数
+    <a href="/2021/12/22/%E9%87%8D%E5%A4%8D%E5%8F%A0%E5%8A%A0%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D/" rel="prev" title="重复叠加字符串匹配">
+      <i class="fa fa-chevron-left"></i> 重复叠加字符串匹配
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/11/17/leetcode525%E7%9B%B8%E5%90%8C%E4%B8%AA%E6%95%B001%E7%9A%84%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%AD%90%E6%95%B0%E7%BB%84/" rel="next" title="leetcode525相同个数01的最长连续子数组">
-      leetcode525相同个数01的最长连续子数组 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -487,7 +482,7 @@ NexT.utils.loadComments('#gitalk-container', () => {
       repo        : 'zuodexin.github.io',
       owner       : 'zuodexin',
       admin       : ['zuodexin'],
-      id          : 'bb6e24bc3949d8128a92a6bdd144fc4b',
+      id          : '666db4c9e38d56cd068c78c8c9bde205',
         language: 'zh-CN',
       distractionFreeMode: true
     });
