@@ -134,12 +134,12 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">10</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">13</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间线<span class="badge">27</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间线<span class="badge">29</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -213,14 +213,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">29</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -835,7 +835,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/21/leetcode777%E4%BA%A4%E6%8D%A2LR%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/22/leetcode390%E6%B6%88%E9%99%A4%E6%B8%B8%E6%88%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
@@ -849,7 +849,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/11/21/leetcode777%E4%BA%A4%E6%8D%A2LR%E5%AD%97%E7%AC%A6%E4%B8%B2/" class="post-title-link" itemprop="url">leetcode777交换LR字符串</a>
+            <a href="/2020/11/22/leetcode390%E6%B6%88%E9%99%A4%E6%B8%B8%E6%88%8F/" class="post-title-link" itemprop="url">leetcode390消除游戏</a>
         </h2>
 
         <div class="post-meta">
@@ -858,10 +858,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-11-21 23:28:16 / 修改时间：23:30:04" itemprop="dateCreated datePublished" datetime="2020-11-21T23:28:16+08:00">2020-11-21</time>
+              <time title="创建时间：2020-11-22 10:41:02" itemprop="dateCreated datePublished" datetime="2020-11-22T10:41:02+08:00">2020-11-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-02 15:41:31" itemprop="dateModified" datetime="2022-01-02T15:41:31+08:00">2022-01-02</time>
+              </span>
 
           
 
@@ -874,15 +880,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>看懂题目之后很好理解，变换中L只能往左移动，R只能往右移动，因此用双指针就可以了。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/21/leetcode777%E4%BA%A4%E6%8D%A2LR%E5%AD%97%E7%AC%A6%E4%B8%B2/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <p>找规律问题</p>
+<p>约瑟夫环（约瑟夫问题）是一个数学的应用问题：已知 n 个人（以编号1，2，3…n分别表示）围坐在一张圆桌周围。从编号为 k 的人开始报数，数到 m 的那个人出圈；他的下一个人又从 1 开始报数，数到 m 的那个人又出圈；依此规律重复下去，直到剩余最后一个胜利者。</p>
+<p>约瑟夫环中，每当有一个人出圈，出圈的人的下一个人成为新的环的头，相当于把数组向前移动 m 位。若已知 n-1 个人时，胜利者的下标位置位 f(n−1,m) ，则 n 个人的时候，就是往后移动 m 位，(因为有可能数组越界，超过的部分会被接到头上，所以还要模 n )，根据此推导过程得到的计算公式为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">f(n,m) &#x3D; (f(n−1,m) + m) % n</span><br></pre></td></tr></table></figure><br>其中，f(n,m) 表示 n 个人进行报数时，每报到 m 时杀掉那个人，最终的编号，f(n−1,m) 表示，n-1 个人报数，每报到 m 时杀掉那个人，最终胜利者的编号。有了递推公式后即可使用递归的方式实现。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">lastRemaining</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> func(n,<span class="literal">false</span>)+<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">bool</span> reverse)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(n!=<span class="number">1</span>)&#123;</span><br><span class="line">            ans = <span class="number">2</span>*func(n/<span class="number">2</span>,!reverse)+<span class="keyword">int</span>((!reverse)||(n%<span class="number">2</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//printf("func(%d,%d)=%d\n",n,reverse,ans);</span></span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -942,7 +943,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2021</span>
+  <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
