@@ -274,7 +274,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/22/leetcode464%E6%88%91%E8%83%BD%E8%B5%A2%E5%90%97/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/22/leetcode494%E7%9B%AE%E6%A0%87%E6%80%BB%E5%92%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
@@ -288,7 +288,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/11/22/leetcode464%E6%88%91%E8%83%BD%E8%B5%A2%E5%90%97/" class="post-title-link" itemprop="url">leetcode464我能赢吗</a>
+            <a href="/2020/11/22/leetcode494%E7%9B%AE%E6%A0%87%E6%80%BB%E5%92%8C/" class="post-title-link" itemprop="url">leetcode494目标总和</a>
         </h2>
 
         <div class="post-meta">
@@ -297,16 +297,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-11-22 10:41:02" itemprop="dateCreated datePublished" datetime="2020-11-22T10:41:02+08:00">2020-11-22</time>
+              <time title="创建时间：2020-11-22 11:22:15 / 修改时间：14:36:40" itemprop="dateCreated datePublished" datetime="2020-11-22T11:22:15+08:00">2020-11-22</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-01 13:25:17" itemprop="dateModified" datetime="2022-01-01T13:25:17+08:00">2022-01-01</time>
-              </span>
 
           
 
@@ -319,7 +313,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canIWin</span><span class="params">(<span class="keyword">int</span> maxChoosableInteger, <span class="keyword">int</span> desiredTotal)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">bool</span> memo[(<span class="number">1</span>&lt;&lt;<span class="number">20</span>)<span class="number">-1</span>]&#123;<span class="number">0</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span>(maxChoosableInteger*(maxChoosableInteger+<span class="number">1</span>)/<span class="number">2</span> &lt; desiredTotal)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> state=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> cur = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> dfs(memo,state,cur,maxChoosableInteger,desiredTotal);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">dfs</span><span class="params">(<span class="keyword">bool</span> memo[],<span class="keyword">int</span> state,<span class="keyword">int</span> cur,<span class="keyword">int</span> n,<span class="keyword">int</span> target)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(state &amp; (<span class="number">1</span>&lt;&lt;(i<span class="number">-1</span>))) <span class="keyword">continue</span>;</span><br><span class="line">            state |= <span class="number">1</span>&lt;&lt;(i<span class="number">-1</span>);</span><br><span class="line">            cur += i;</span><br><span class="line">            <span class="keyword">if</span>(cur&gt;=target) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            <span class="comment">//else if(!dfs(memo,state,cur,n,target))&#123;</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(!memo[state]&amp;&amp;!dfs(memo,state,cur,n,target))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            memo[state] = <span class="literal">true</span>;</span><br><span class="line">            cur -= i;</span><br><span class="line">            state ^= <span class="number">1</span>&lt;&lt;(i<span class="number">-1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          <p>动态规划</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/22/leetcode494%E7%9B%AE%E6%A0%87%E6%80%BB%E5%92%8C/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -338,7 +340,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/22/leetcode56%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/22/leetcode477%E5%85%A8%E9%83%A8%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
@@ -352,7 +354,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/11/22/leetcode56%E5%90%88%E5%B9%B6%E5%8C%BA%E9%97%B4/" class="post-title-link" itemprop="url">leetcode56合并区间</a>
+            <a href="/2020/11/22/leetcode477%E5%85%A8%E9%83%A8%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/" class="post-title-link" itemprop="url">leetcode477全部汉明距离</a>
         </h2>
 
         <div class="post-meta">
@@ -361,16 +363,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-11-22 10:41:02" itemprop="dateCreated datePublished" datetime="2020-11-22T10:41:02+08:00">2020-11-22</time>
+              <time title="创建时间：2020-11-22 10:41:02 / 修改时间：10:42:35" itemprop="dateCreated datePublished" datetime="2020-11-22T10:41:02+08:00">2020-11-22</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-02 17:07:23" itemprop="dateModified" datetime="2022-01-02T17:07:23+08:00">2022-01-02</time>
-              </span>
 
           
 
@@ -383,9 +379,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>如果需要this是const，要在函数的花括号前面加const关键字</p>
-<p>优先队列返回的都是const对象，和其他STL数据结构还不一样</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Interval</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> start;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">end</span>;</span><br><span class="line">    Interval(<span class="keyword">int</span> start,<span class="keyword">int</span> <span class="built_in">end</span>):start(start),<span class="built_in">end</span>(<span class="built_in">end</span>)&#123;</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> Interval&amp; b) <span class="keyword">const</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> !(start&lt;b.start);</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">merge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; intervals)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; ans;</span><br><span class="line">        priority_queue&lt;Interval&gt; <span class="built_in">queue</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;intervals.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            <span class="function">Interval <span class="title">interval</span><span class="params">(intervals[i][<span class="number">0</span>],intervals[i][<span class="number">1</span>])</span></span>;</span><br><span class="line">            <span class="built_in">queue</span>.push(interval);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(!<span class="built_in">queue</span>.empty())&#123;</span><br><span class="line">            <span class="keyword">const</span> Interval cur = <span class="built_in">queue</span>.top();</span><br><span class="line">            <span class="built_in">queue</span>.pop();</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">queue</span>.empty())&#123;</span><br><span class="line">                <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v&#123;cur.start,cur.<span class="built_in">end</span>&#125;;</span><br><span class="line">                ans.push_back(v);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">const</span> Interval top = <span class="built_in">queue</span>.top();</span><br><span class="line">            <span class="built_in">queue</span>.pop();</span><br><span class="line">            <span class="keyword">if</span>(cur.<span class="built_in">end</span>&gt;=top.start)&#123;</span><br><span class="line">                <span class="function"><span class="keyword">const</span> Interval <span class="title">merged</span><span class="params">(cur.start,<span class="built_in">max</span>(top.<span class="built_in">end</span>,cur.<span class="built_in">end</span>))</span></span>;</span><br><span class="line">                <span class="built_in">queue</span>.push(merged);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; v&#123;cur.start,cur.<span class="built_in">end</span>&#125;;</span><br><span class="line">                ans.push_back(v);</span><br><span class="line">                <span class="built_in">queue</span>.push(top);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+          <p>分别统计每一位上0，1的个数，这一位产生的汉明距离就是二者的乘积</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/22/leetcode477%E5%85%A8%E9%83%A8%E6%B1%89%E6%98%8E%E8%B7%9D%E7%A6%BB/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
