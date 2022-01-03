@@ -1,6 +1,5 @@
 ---
 title: leetcode390消除游戏
-date: 2020-11-22 10:41:02
 tags: [leetcode,找规律]
 ---
 
