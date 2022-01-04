@@ -8,7 +8,7 @@ tags: [leetcode,动态规划]
 ```c++
 
 
-// dp[i][j] = min(dp[i-1]dp[j-1],dp[i-1][j]+1,dp[i][j-1]+1)
+// dp[i][j] = min(dp[i-1]dp[j-1]如果相等,dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1]dp[j-1]+1)
 
 
 class Solution {
