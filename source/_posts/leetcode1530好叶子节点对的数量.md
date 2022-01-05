@@ -3,6 +3,7 @@ title: leetcode1530好叶子节点对的数量
 tags: [leetcode,树,DFS]
 ---
 左右需返回不同深度叶子节点的统计个数，超过distance的需去除
+注意：map 自带了成员函数upper_bound 
 ```c++
 /**
  * Definition for a binary tree node.
