@@ -1,7 +1,7 @@
 ---
 title: leetcode1020enclave的数量
 date: 2020-11-25 21:33:34
-tags:[leetcode]
+tags: [leetcode,dfs]
 ---
 
 暴力dfs，更简单的是只在边界上dfs
