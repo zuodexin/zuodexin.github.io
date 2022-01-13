@@ -134,12 +134,12 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">25</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间线<span class="badge">41</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间线<span class="badge">44</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -213,14 +213,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">27</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -270,6 +270,181 @@
 
         <div class="content index posts-expand">
           
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/01/03/leetcode72%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
+      <meta itemprop="name" content="Dexin">
+      <meta itemprop="description" content="万物之始，大道至简，衍化至繁">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="算法加油站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/03/leetcode72%E7%BC%96%E8%BE%91%E8%B7%9D%E7%A6%BB/" class="post-title-link" itemprop="url">leetcode72，编辑距离</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-03 22:43:55 / 修改时间：22:56:03" itemprop="dateCreated datePublished" datetime="2022-01-03T22:43:55+08:00">2022-01-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// dp[i][j] = min(dp[i-1]dp[j-1]如果相等,dp[i-1][j]+1,dp[i][j-1]+1,dp[i-1]dp[j-1]+1)</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">oneEditAway</span><span class="params">(<span class="built_in">string</span> first, <span class="built_in">string</span> second)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> distance = editDistance(first,second);</span><br><span class="line">        <span class="comment">//cout&lt;&lt;distance&lt;&lt;endl;</span></span><br><span class="line">        <span class="keyword">return</span> distance&lt;=<span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">editDistance</span><span class="params">(<span class="built_in">string</span> first,<span class="built_in">string</span> second)</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; <span class="title">dp</span><span class="params">(first.<span class="built_in">size</span>()+<span class="number">1</span>,<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(second.<span class="built_in">size</span>()+<span class="number">1</span>,<span class="number">0</span>))</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=first.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;=second.<span class="built_in">size</span>();j++)&#123;</span><br><span class="line">                <span class="keyword">if</span> (i==<span class="number">0</span> &amp;&amp; j==<span class="number">0</span>)&#123;</span><br><span class="line">                    dp[i][j] = <span class="number">0</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span> (i==<span class="number">0</span>)&#123;</span><br><span class="line">                    dp[i][j] = dp[i][j<span class="number">-1</span>]+<span class="number">1</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span> <span class="keyword">if</span>(j==<span class="number">0</span>)&#123;</span><br><span class="line">                    dp[i][j] = dp[i<span class="number">-1</span>][j]+<span class="number">1</span>;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    dp[i][j] = <span class="built_in">min</span>(<span class="built_in">min</span>(dp[i<span class="number">-1</span>][j]+<span class="number">1</span>,dp[i][j<span class="number">-1</span>]+<span class="number">1</span>),dp[i<span class="number">-1</span>][j<span class="number">-1</span>]+<span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(i&gt;<span class="number">0</span>&amp;&amp; j&gt;<span class="number">0</span>&amp;&amp; first[i<span class="number">-1</span>]==second[j<span class="number">-1</span>])&#123;</span><br><span class="line">                    dp[i][j] = <span class="built_in">min</span>(dp[i][j],dp[i<span class="number">-1</span>][j<span class="number">-1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[first.<span class="built_in">size</span>()][second.<span class="built_in">size</span>()];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/01/03/leetcode1185%E4%B8%80%E5%91%A8%E4%B8%AD%E7%9A%84%E7%AC%AC%E5%87%A0%E5%A4%A9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
+      <meta itemprop="name" content="Dexin">
+      <meta itemprop="description" content="万物之始，大道至简，衍化至繁">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="算法加油站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/03/leetcode1185%E4%B8%80%E5%91%A8%E4%B8%AD%E7%9A%84%E7%AC%AC%E5%87%A0%E5%A4%A9/" class="post-title-link" itemprop="url">leetcode1185 一周中的第几天</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-03 22:07:16 / 修改时间：22:08:49" itemprop="dateCreated datePublished" datetime="2022-01-03T22:07:16+08:00">2022-01-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>注意闰年的判断条件</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">dayOfTheWeek</span><span class="params">(<span class="keyword">int</span> day, <span class="keyword">int</span> month, <span class="keyword">int</span> year)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> dayCnt[]&#123;</span><br><span class="line">            <span class="number">31</span>,<span class="number">28</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span>,<span class="number">30</span>,<span class="number">31</span></span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="built_in">string</span> dayNames[]&#123;<span class="string">"Sunday"</span>, <span class="string">"Monday"</span>, <span class="string">"Tuesday"</span>, <span class="string">"Wednesday"</span>, <span class="string">"Thursday"</span>, <span class="string">"Friday"</span>, <span class="string">"Saturday"</span>&#125;;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">int</span> ans = <span class="number">4</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1971</span>;i&lt;year;i++)&#123;</span><br><span class="line">            <span class="keyword">bool</span> isLeap = i%<span class="number">4</span>==<span class="number">0</span>?(i%<span class="number">100</span>==<span class="number">0</span>?i%<span class="number">400</span>==<span class="number">0</span>:<span class="literal">true</span>):<span class="literal">false</span>;</span><br><span class="line">            ans += <span class="number">365</span>+<span class="keyword">int</span>(isLeap);</span><br><span class="line">            <span class="comment">//if(i==2000) cout&lt;&lt;isLeap&lt;&lt;endl;</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">bool</span> curIsLeap = year%<span class="number">4</span>==<span class="number">0</span>?(year%<span class="number">100</span>==<span class="number">0</span>?year%<span class="number">400</span>==<span class="number">0</span>:<span class="literal">true</span>):<span class="literal">false</span>;</span><br><span class="line">        <span class="comment">// cout&lt;&lt;curIsLeap&lt;&lt;endl;</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i+<span class="number">1</span>&lt;month;i++)&#123;</span><br><span class="line">            ans += dayCnt[i]+<span class="keyword">int</span>(i==<span class="number">1</span> &amp;&amp; curIsLeap);</span><br><span class="line">        &#125;</span><br><span class="line">        ans += day;</span><br><span class="line">        <span class="keyword">return</span> dayNames[ans%<span class="number">7</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/01/02/leetcode1233%E5%88%A0%E9%99%A4%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
+      <meta itemprop="name" content="Dexin">
+      <meta itemprop="description" content="万物之始，大道至简，衍化至繁">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="算法加油站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/02/leetcode1233%E5%88%A0%E9%99%A4%E5%AD%90%E6%96%87%E4%BB%B6%E5%A4%B9/" class="post-title-link" itemprop="url">leetcode1233 删除子文件夹</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-02 19:04:41 / 修改时间：19:06:18" itemprop="dateCreated datePublished" datetime="2022-01-02T19:04:41+08:00">2022-01-02</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_N 500000</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Trie</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> nex[MAX_N][<span class="number">27</span>]=&#123;<span class="number">0</span>&#125;,cnt=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> exist[MAX_N]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> l = s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;l;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> c= s[i]==<span class="string">'/'</span>?<span class="number">26</span>:s[i]-<span class="string">'a'</span>;</span><br><span class="line">            <span class="keyword">if</span>(!nex[p][c]) nex[p][c] = ++cnt;</span><br><span class="line">            assert(cnt&lt;MAX_N);</span><br><span class="line">            p = nex[p][c];</span><br><span class="line">        &#125;</span><br><span class="line">        exist[p] = <span class="number">1</span>;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">find</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span>&amp; s)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> p=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;s.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> c = s[i]==<span class="string">'/'</span>?<span class="number">26</span>:s[i]-<span class="string">'a'</span>;</span><br><span class="line">            p = nex[p][c];</span><br><span class="line">            <span class="keyword">if</span>(!exist[p]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">QItem</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">    <span class="built_in">string</span> s;</span><br><span class="line">    <span class="keyword">int</span> child;</span><br><span class="line">    QItem(<span class="keyword">int</span> id,<span class="built_in">string</span> s,<span class="keyword">int</span> c):id(id),s(s),child(c)&#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ostream&amp; <span class="keyword">operator</span> &lt;&lt; (ostream&amp; out,<span class="keyword">const</span> QItem&amp; q)&#123;</span><br><span class="line">    out&lt;&lt;<span class="string">"id:"</span>&lt;&lt;q.id&lt;&lt;<span class="string">"s:"</span>&lt;&lt;q.s;</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; <span class="title">removeSubfolders</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; folder)</span> </span>&#123;</span><br><span class="line">        Trie trie;</span><br><span class="line">        <span class="keyword">for</span>(<span class="built_in">string</span> s:folder)&#123;</span><br><span class="line">            trie.insert(s);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">queue</span>&lt;QItem&gt; q;</span><br><span class="line">        q.push(QItem(<span class="number">0</span>,<span class="string">""</span>,<span class="number">27</span>));</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; ans;</span><br><span class="line">        <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">            QItem p=q.front();</span><br><span class="line">            q.pop();</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;p.child;i++)&#123;</span><br><span class="line">                <span class="keyword">int</span> c = trie.nex[p.id][i];</span><br><span class="line">                <span class="keyword">if</span>(!c) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="built_in">stringstream</span> ss;</span><br><span class="line">                ss&lt;&lt;p.s&lt;&lt;<span class="keyword">char</span>(i==<span class="number">26</span>?<span class="string">'/'</span>:<span class="string">'a'</span>+i);</span><br><span class="line">                <span class="built_in">string</span> curs=ss.str();</span><br><span class="line">                <span class="comment">//cout&lt;&lt;p&lt;&lt;curs&lt;&lt;"i:"&lt;&lt;i&lt;&lt;endl;</span></span><br><span class="line">                <span class="keyword">if</span>(i&lt;<span class="number">26</span> &amp;&amp; trie.exist[c])&#123; </span><br><span class="line">                    ans.push_back(curs);</span><br><span class="line">                    <span class="function">QItem <span class="title">item</span><span class="params">(c,curs,<span class="number">26</span>)</span></span>;</span><br><span class="line">                    q.push(item);</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    QItem item(c,curs,<span class="number">27</span>);</span><br><span class="line">                    q.push(item);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -680,202 +855,6 @@
       
           <h4><span id> </span></h4><p>二分查找，注意atan2的输入和输出，upper_bound的使用</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">visiblePoints</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; points, <span class="keyword">int</span> angle, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; location)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(points.<span class="built_in">size</span>()==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; polars;</span><br><span class="line">        <span class="keyword">int</span> overlap=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> num_ext = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;points.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="built_in">point</span>=points[i];</span><br><span class="line">            <span class="keyword">int</span> x = <span class="built_in">point</span>[<span class="number">0</span>],y=<span class="built_in">point</span>[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>((location[<span class="number">0</span>]==x) &amp;&amp; (location[<span class="number">1</span>]==y) )&#123;</span><br><span class="line">                overlap++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">double</span> theta = <span class="built_in">atan2</span>(x-location[<span class="number">0</span>],y-location[<span class="number">1</span>]);</span><br><span class="line">                polars.push_back(theta);</span><br><span class="line">                polars.push_back(theta+<span class="number">2</span>*M_PI);</span><br><span class="line">                num_ext++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(polars.<span class="built_in">begin</span>(),polars.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">int</span> max_num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;polars.<span class="built_in">size</span>()-num_ext;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> up_idx = upper_bound(polars.<span class="built_in">begin</span>()+i,polars.<span class="built_in">end</span>(), polars[i]+angle*M_PI/<span class="number">180</span>)-polars.<span class="built_in">begin</span>();</span><br><span class="line">            max_num = <span class="built_in">max</span>(max_num,up_idx-i);</span><br><span class="line">        &#125;</span><br><span class="line">        max_num += overlap;</span><br><span class="line">        <span class="keyword">return</span> max_num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/14/leetcode%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%85%A8%E9%9B%B6%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%91%E5%8F%8D%E8%BD%AC%E6%AC%A1%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
-      <meta itemprop="name" content="Dexin">
-      <meta itemprop="description" content="万物之始，大道至简，衍化至繁">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="算法加油站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/12/14/leetcode%E8%BD%AC%E5%8C%96%E4%B8%BA%E5%85%A8%E9%9B%B6%E7%9F%A9%E9%98%B5%E7%9A%84%E6%9C%80%E5%B0%91%E5%8F%8D%E8%BD%AC%E6%AC%A1%E6%95%B0/" class="post-title-link" itemprop="url">leetcode转化为全零矩阵的最少反转次数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-12-14 22:18:01 / 修改时间：22:20:06" itemprop="dateCreated datePublished" datetime="2021-12-14T22:18:01+08:00">2021-12-14</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4><span id="bfs-状态压缩">BFS + 状态压缩</span></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">private:</span><br><span class="line">    static constexpr int  dirs[5][2] &#x3D;&#123;&#123;0,1&#125;,&#123;0,-1&#125;,&#123;-1,0&#125;,&#123;1,0&#125;,&#123;0,0&#125;&#125;;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line"></span><br><span class="line">    int encode(vector&lt;vector&lt;int&gt;&gt;&amp; mat) &#123;</span><br><span class="line">        int state&#x3D;0;</span><br><span class="line">        for(int i&#x3D;0;i&lt;mat.size();i++)&#123;</span><br><span class="line">            for(int j&#x3D;0;j&lt;mat[i].size();j++)&#123;</span><br><span class="line">                state&lt;&lt;&#x3D;1;</span><br><span class="line">                state +&#x3D; mat[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int encode_mask(int row,int col,int m,int n)&#123;</span><br><span class="line">        int pos &#x3D; m*n-(row*n+col+1);</span><br><span class="line">        return 1&lt;&lt;pos;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int convert(int state,int row,int col,int m,int n)&#123;</span><br><span class="line">        for(int k&#x3D;0;k&lt;5;k++)&#123;</span><br><span class="line">            int r0&#x3D;row+dirs[k][0],c0&#x3D;col+dirs[k][1];</span><br><span class="line">            if (r0&gt;&#x3D;0 &amp;&amp; r0&lt;m &amp;&amp; c0&gt;&#x3D;0 &amp;&amp; c0&lt;n)&#123;</span><br><span class="line">                int mask &#x3D; encode_mask(r0,c0,m,n);</span><br><span class="line">                state ^&#x3D; mask;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return state;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void printState(int state)&#123;</span><br><span class="line">        std::bitset&lt;4&gt; s(state);</span><br><span class="line">        cout&lt;&lt;s&lt;&lt;endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    int minFlips(vector&lt;vector&lt;int&gt;&gt;&amp; mat) &#123;</span><br><span class="line">        int init_state &#x3D; encode(mat);</span><br><span class="line">        if(init_state&#x3D;&#x3D;0) return 0;</span><br><span class="line">        unordered_set&lt;int&gt; seen;</span><br><span class="line">        queue&lt;int&gt; q;</span><br><span class="line">        q.push(init_state);</span><br><span class="line">        seen.insert(init_state);</span><br><span class="line">        int m &#x3D; mat.size();</span><br><span class="line">        int n &#x3D; mat[0].size();</span><br><span class="line">        int step&#x3D;0;</span><br><span class="line">        while(!q.empty())&#123;</span><br><span class="line">            ++step;</span><br><span class="line">            int k&#x3D;q.size();</span><br><span class="line">            for(int _&#x3D;0;_&lt;k;_++)&#123;</span><br><span class="line">                int state0 &#x3D; q.front();</span><br><span class="line">                q.pop();</span><br><span class="line">                for(int i&#x3D;0;i&lt;m;i++)&#123;</span><br><span class="line">                    for(int j&#x3D;0;j&lt;n;j++)&#123;</span><br><span class="line">                        int state1 &#x3D; convert(state0,i,j,m,n);</span><br><span class="line">                        if(!seen.count(state1))&#123;</span><br><span class="line">                            seen.insert(state1);</span><br><span class="line">                            q.push(state1);</span><br><span class="line">                        &#125;</span><br><span class="line">                        if(state1&#x3D;&#x3D;0)&#123;</span><br><span class="line">                            return step;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/25/leetcode1020enclave%E7%9A%84%E6%95%B0%E9%87%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
-      <meta itemprop="name" content="Dexin">
-      <meta itemprop="description" content="万物之始，大道至简，衍化至繁">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="算法加油站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/25/leetcode1020enclave%E7%9A%84%E6%95%B0%E9%87%8F/" class="post-title-link" itemprop="url">leetcode1020enclave的数量</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-11-25 21:33:34" itemprop="dateCreated datePublished" datetime="2020-11-25T21:33:34+08:00">2020-11-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-01-12 00:22:00" itemprop="dateModified" datetime="2022-01-12T00:22:00+08:00">2022-01-12</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>暴力dfs，更简单的是只在边界上dfs</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/25/leetcode1020enclave%E7%9A%84%E6%95%B0%E9%87%8F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/22/leetcode886%E5%88%86%E4%B8%A4%E7%BB%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
-      <meta itemprop="name" content="Dexin">
-      <meta itemprop="description" content="万物之始，大道至简，衍化至繁">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="算法加油站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/22/leetcode886%E5%88%86%E4%B8%A4%E7%BB%84/" class="post-title-link" itemprop="url">leetcode886分两组</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-11-22 17:31:45 / 修改时间：17:36:47" itemprop="dateCreated datePublished" datetime="2020-11-22T17:31:45+08:00">2020-11-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>和是否二分图那道题一样的做法，要注意图需要初始化为无向图。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/11/22/leetcode886%E5%88%86%E4%B8%A4%E7%BB%84/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 
