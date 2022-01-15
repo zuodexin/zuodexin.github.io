@@ -22,21 +22,21 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"8.0.0-rc.4","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="要用到线段树这个数据结构 主要的方法有：建树，更新，区间和，都可以使用递归来实现。">
+  <meta name="description" content="计算力扣银行的钱  找规律，应用等差数列求和公式 12345678910111213141516171819class Solution &amp;#123;public:    int totalMoney(int n) &amp;#123;        int week &#x3D; (n-1)&#x2F;7;        int day &#x3D; (n-1)%7;        &#x2F;*            1,2,3,4,5">
 <meta property="og:type" content="article">
-<meta property="og:title" content="区间和">
-<meta property="og:url" content="http://yoursite.com/2020/11/08/%E5%8C%BA%E9%97%B4%E5%92%8C/index.html">
+<meta property="og:title" content="leetcode简单题汇总">
+<meta property="og:url" content="http://yoursite.com/2022/01/15/leetcode%E7%AE%80%E5%8D%95%E9%A2%98%E6%B1%87%E6%80%BB/index.html">
 <meta property="og:site_name" content="算法加油站">
-<meta property="og:description" content="要用到线段树这个数据结构 主要的方法有：建树，更新，区间和，都可以使用递归来实现。">
+<meta property="og:description" content="计算力扣银行的钱  找规律，应用等差数列求和公式 12345678910111213141516171819class Solution &amp;#123;public:    int totalMoney(int n) &amp;#123;        int week &#x3D; (n-1)&#x2F;7;        int day &#x3D; (n-1)%7;        &#x2F;*            1,2,3,4,5">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-08T13:22:32.000Z">
-<meta property="article:modified_time" content="2020-11-08T14:37:49.195Z">
+<meta property="article:published_time" content="2022-01-15T12:27:00.586Z">
+<meta property="article:modified_time" content="2022-01-15T16:11:19.036Z">
 <meta property="article:author" content="Dexin">
 <meta property="article:tag" content="leetcode">
-<meta property="article:tag" content="线段树">
+<meta property="article:tag" content="双指针，找规律">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/11/08/%E5%8C%BA%E9%97%B4%E5%92%8C/">
+<link rel="canonical" href="http://yoursite.com/2022/01/15/leetcode%E7%AE%80%E5%8D%95%E9%A2%98%E6%B1%87%E6%80%BB/">
 
 
 <script class="page-configurations">
@@ -49,7 +49,7 @@
   };
 </script>
 
-  <title>区间和 | 算法加油站</title>
+  <title>leetcode简单题汇总 | 算法加油站</title>
   
 
 
@@ -278,7 +278,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/08/%E5%8C%BA%E9%97%B4%E5%92%8C/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/01/15/leetcode%E7%AE%80%E5%8D%95%E9%A2%98%E6%B1%87%E6%80%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
@@ -291,7 +291,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          区间和
+          leetcode简单题汇总
         </h1>
 
         <div class="post-meta">
@@ -300,10 +300,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2020-11-08 21:22:32 / 修改时间：22:37:49" itemprop="dateCreated datePublished" datetime="2020-11-08T21:22:32+08:00">2020-11-08</time>
+              <time title="创建时间：2022-01-15 20:27:00" itemprop="dateCreated datePublished" datetime="2022-01-15T20:27:00+08:00">2022-01-15</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-01-16 00:11:19" itemprop="dateModified" datetime="2022-01-16T00:11:19+08:00">2022-01-16</time>
+              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -323,9 +329,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>要用到线段树这个数据结构</p>
-<p>主要的方法有：建树，更新，区间和，都可以使用递归来实现。<br><a id="more"></a><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumArray</span> &#123;</span></span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; nums;</span><br><span class="line">    <span class="keyword">int</span> arr[MAX_LEN] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line">   <span class="keyword">public</span>:</span><br><span class="line">    NumArray(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums) &#123;</span><br><span class="line">        <span class="keyword">this</span>-&gt;nums = nums;</span><br><span class="line">        <span class="keyword">if</span>(nums.<span class="built_in">size</span>()&gt;<span class="number">0</span>)</span><br><span class="line">            build_tree(<span class="number">0</span>, nums.<span class="built_in">size</span>() - <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        update_helper(i, <span class="number">0</span>, nums.<span class="built_in">size</span>() - <span class="number">1</span>, val, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">update_helper</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> val, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l == r) &#123;</span><br><span class="line">            nums[i] = val;</span><br><span class="line">            arr[node] = val;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> left_node = (node + <span class="number">1</span>) * <span class="number">2</span> - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> right_node = (node + <span class="number">1</span>) * <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (i &lt;= mid) &#123;</span><br><span class="line">            update_helper(i, l, mid, val, left_node);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            update_helper(i, mid + <span class="number">1</span>, r, val, right_node);</span><br><span class="line">        &#125;</span><br><span class="line">        arr[node] = arr[left_node] + arr[right_node];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sumRange</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123; </span><br><span class="line">        <span class="keyword">return</span> sumRangeHelper(i,j,<span class="number">0</span>,nums.<span class="built_in">size</span>()<span class="number">-1</span>,<span class="number">0</span>); </span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sumRangeHelper</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l==r||(i==l)&amp;&amp;(j==r))&#123;</span><br><span class="line">            <span class="keyword">return</span> arr[node];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> left_node = (node + <span class="number">1</span>) * <span class="number">2</span> - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> right_node = (node + <span class="number">1</span>) * <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (j &lt;= mid) &#123;</span><br><span class="line">            <span class="keyword">return</span> sumRangeHelper(i, j, l, mid, left_node);</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (i &gt; mid) &#123;</span><br><span class="line">            <span class="keyword">return</span> sumRangeHelper(i, j, mid + <span class="number">1</span>, r, right_node);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> sumRangeHelper(i, mid, l, mid, left_node) +</span><br><span class="line">                   sumRangeHelper(mid+<span class="number">1</span>, j, mid + <span class="number">1</span>, r, right_node);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">build_tree</span><span class="params">(<span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> node)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l == r) &#123;</span><br><span class="line">            arr[node] = nums[l];</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> left_node = (node + <span class="number">1</span>) * <span class="number">2</span> - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> right_node = (node + <span class="number">1</span>) * <span class="number">2</span>;</span><br><span class="line">        build_tree(l, mid, left_node);</span><br><span class="line">        build_tree(mid + <span class="number">1</span>, r, right_node);</span><br><span class="line">        arr[node] = arr[left_node] + arr[right_node];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-
+        <a id="more"></a>
+<ol>
+<li>计算力扣银行的钱</li>
+</ol>
+<p>找规律，应用等差数列求和公式</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">totalMoney</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> week = (n<span class="number">-1</span>)/<span class="number">7</span>;</span><br><span class="line">        <span class="keyword">int</span> day = (n<span class="number">-1</span>)%<span class="number">7</span>;</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">            1,2,3,4,5,6,7</span></span><br><span class="line"><span class="comment">            2,3,4,5,6,7,8 = sum(week 1)+7</span></span><br><span class="line"><span class="comment">            3,4,5,6,7,8,9 = sum(week 1)+7*2</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line">        <span class="keyword">int</span> before = week*(<span class="number">1</span>+<span class="number">7</span>)*<span class="number">7</span>/<span class="number">2</span> + <span class="number">7</span>*(week<span class="number">-1</span>)*week/<span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> sum = before;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=day;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> base = week+<span class="number">1</span>;</span><br><span class="line">            sum += base + i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>两数之和 II - 输入有序数组</li>
+</ol>
+<p>双指针，初始化时，l只能往右，r只能往左</p>
+<p>P(l,r) 表示在$[l,r]上搜索问题的解，P(l,r) 可以分解为 P(l+1,r)，P(l,r-1)</p>
+<p>当$numbers[l]+numbers[r] &lt; target$，l+1或者r+1都有可能使和增大，但r+1已经搜索过了，所以只能l+1</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">twoSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; numbers, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = numbers.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">int</span> l=<span class="number">0</span>,r=n<span class="number">-1</span>;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">ans</span><span class="params">(<span class="number">2</span>,<span class="number">-1</span>)</span></span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">            <span class="keyword">if</span>(numbers[l]+numbers[r]==target)&#123;</span><br><span class="line">                ans[<span class="number">0</span>] = l+<span class="number">1</span>;</span><br><span class="line">                ans[<span class="number">1</span>] = r+<span class="number">1</span>;</span><br><span class="line">                <span class="keyword">return</span> ans;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(numbers[l]+numbers[r]&gt;target)&#123;</span><br><span class="line">                r--;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                l++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>反转字符串中的单词 III</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">reverseWords</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> start=<span class="number">0</span>,<span class="built_in">end</span>,l,r,n=s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function"><span class="built_in">string</span> <span class="title">ans</span><span class="params">(s)</span></span>;</span><br><span class="line">        <span class="keyword">while</span>(start&lt;n)&#123;</span><br><span class="line">            <span class="keyword">while</span>(start&lt;n &amp;&amp; ans[start]==<span class="string">' '</span>) start++;</span><br><span class="line">            <span class="built_in">end</span> = start;</span><br><span class="line">            <span class="keyword">while</span>(<span class="built_in">end</span>&lt;n &amp;&amp; ans[<span class="built_in">end</span>]!=<span class="string">' '</span>) <span class="built_in">end</span>++;</span><br><span class="line">            l = start;</span><br><span class="line">            r = <span class="built_in">end</span><span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">while</span>(l&lt;r)&#123;</span><br><span class="line">                swap(ans[l],ans[r]);</span><br><span class="line">                l++;</span><br><span class="line">                r--;</span><br><span class="line">            &#125;</span><br><span class="line">            start = <span class="built_in">end</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -335,7 +355,7 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/leetcode/" rel="tag"># leetcode</a>
-              <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag"># 线段树</a>
+              <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88%EF%BC%8C%E6%89%BE%E8%A7%84%E5%BE%8B/" rel="tag"># 双指针，找规律</a>
           </div>
 
         
@@ -344,13 +364,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/11/08/leetcode205%E5%90%8C%E6%9E%84%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="prev" title="leetcode205同构字符串">
-      <i class="fa fa-chevron-left"></i> leetcode205同构字符串
+    <a href="/2022/01/13/leetcode283%E7%A7%BB%E5%8A%A8%E9%9B%B6/" rel="prev" title="leetcode移动零">
+      <i class="fa fa-chevron-left"></i> leetcode移动零
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/11/08/N%E7%9A%87%E5%90%8E/" rel="next" title="N皇后">
-      N皇后 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -489,7 +506,7 @@ NexT.utils.loadComments('#gitalk-container', () => {
       repo        : 'zuodexin.github.io',
       owner       : 'zuodexin',
       admin       : ['zuodexin'],
-      id          : '1d95dc19c37a63a1922f1d95e3c8d14e',
+      id          : '57e9aca6645ea0f0faa9e435ee185fb1',
         language: 'zh-CN',
       distractionFreeMode: true
     });

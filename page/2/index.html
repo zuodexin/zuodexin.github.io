@@ -134,12 +134,12 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">28</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间线<span class="badge">44</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>时间线<span class="badge">45</span></a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -213,14 +213,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-count">28</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -270,6 +270,64 @@
 
         <div class="content index posts-expand">
           
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/01/05/leetcode913%E7%8C%AB%E6%8A%93%E8%80%81%E9%BC%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
+      <meta itemprop="name" content="Dexin">
+      <meta itemprop="description" content="万物之始，大道至简，衍化至繁">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="算法加油站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/05/leetcode913%E7%8C%AB%E6%8A%93%E8%80%81%E9%BC%A0/" class="post-title-link" itemprop="url">leetcode913，猫抓老鼠</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-01-05 00:08:20 / 修改时间：00:12:54" itemprop="dateCreated datePublished" datetime="2022-01-05T00:08:20+08:00">2022-01-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 51</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> dp[MAXN][MAXN][<span class="number">2</span>*MAXN+<span class="number">1</span>];</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; graph;</span><br><span class="line">    <span class="keyword">int</span> priority[<span class="number">2</span>][<span class="number">3</span>]&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">3</span>&#125;;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">catMouseGame</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; graph)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">-1</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">        <span class="keyword">this</span>-&gt;graph = graph;</span><br><span class="line">        <span class="keyword">int</span> ans = dfs(<span class="number">1</span>,<span class="number">2</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// mouse priority: 1,0,2 -&gt; 2,3,1</span></span><br><span class="line">    <span class="comment">// cat priority: 2,0,1 -&gt; 2,1,3</span></span><br><span class="line">    <span class="keyword">int</span> chioce=<span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> mouse,<span class="keyword">int</span> cat,<span class="keyword">int</span> <span class="built_in">turn</span>)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">turn</span>&gt;=<span class="number">2</span>*graph.<span class="built_in">size</span>()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(dp[mouse][cat][<span class="built_in">turn</span>]!=<span class="number">-1</span>) <span class="keyword">return</span> dp[mouse][cat][<span class="built_in">turn</span>];</span><br><span class="line">        <span class="keyword">if</span>(mouse==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(mouse==cat) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">turn</span>%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> max_score=<span class="number">-1</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[mouse].<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">                <span class="keyword">int</span> state = dfs(graph[mouse][i],cat,<span class="built_in">turn</span>+<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">int</span> score = priority[<span class="number">0</span>][state];</span><br><span class="line">                <span class="keyword">if</span>(score&gt;max_score)&#123;</span><br><span class="line">                    max_score = score;</span><br><span class="line">                    dp[mouse][cat][<span class="built_in">turn</span>] = state;</span><br><span class="line">                    chioce = graph[mouse][i];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> max_score=<span class="number">-1</span>;</span><br><span class="line">             <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;graph[cat].<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(graph[cat][i]==<span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">int</span> state = dfs(mouse,graph[cat][i],<span class="built_in">turn</span>+<span class="number">1</span>);</span><br><span class="line">                <span class="keyword">int</span> score = priority[<span class="number">1</span>][state];</span><br><span class="line">                <span class="keyword">if</span>(score&gt;max_score)&#123;</span><br><span class="line">                    max_score = score;</span><br><span class="line">                    dp[mouse][cat][<span class="built_in">turn</span>] = state;</span><br><span class="line">                    chioce = graph[cat][i];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[mouse][cat][<span class="built_in">turn</span>];</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
       
   
   
@@ -796,65 +854,6 @@
 <p>后续计算可视为对 needle + “#”(不存在的字符) + haystack 再算一次next数组</p>
 <p>需要背下来。。。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int strStr(string haystack, string needle) &#123;</span><br><span class="line">        int m&#x3D;haystack.size(),n&#x3D;needle.size();</span><br><span class="line">        if(n&#x3D;&#x3D;0) return 0;</span><br><span class="line">        if(n&gt;m) return -1;</span><br><span class="line">        vector&lt;int&gt; next(n,0);</span><br><span class="line">        for(int i&#x3D;1,j&#x3D;0;i&lt;n;i++)&#123;</span><br><span class="line">            while(j&gt;0 &amp;&amp; needle[i]!&#x3D;needle[j])</span><br><span class="line">                j &#x3D; next[j-1];</span><br><span class="line">            if(needle[i]&#x3D;&#x3D;needle[j])</span><br><span class="line">                j++;</span><br><span class="line">            next[i] &#x3D; j;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i&#x3D;0,j&#x3D;0;i&lt;m;i++)&#123;</span><br><span class="line">            while(j&gt;0 &amp;&amp; haystack[i]!&#x3D;needle[j])</span><br><span class="line">                j &#x3D; next[j-1];</span><br><span class="line">            if(haystack[i]&#x3D;&#x3D;needle[j])</span><br><span class="line">                j++;</span><br><span class="line">            if(j&#x3D;&#x3D;n) return i-n+1;</span><br><span class="line">        &#125;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/12/17/%E5%8F%AF%E8%A7%81%E7%82%B9%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B0%E7%9B%AE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://tvax3.sinaimg.cn/crop.0.0.667.667.180/ede8cda5ly8gc2fdo8lopj20ij0ij758.jpg?KID=imgbed,tva&Expires=1604853986&ssig=6nGDXXUpsZ">
-      <meta itemprop="name" content="Dexin">
-      <meta itemprop="description" content="万物之始，大道至简，衍化至繁">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="算法加油站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/12/17/%E5%8F%AF%E8%A7%81%E7%82%B9%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B0%E7%9B%AE/" class="post-title-link" itemprop="url">可见点的最大数目</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2021-12-17 00:11:39 / 修改时间：00:13:35" itemprop="dateCreated datePublished" datetime="2021-12-17T00:11:39+08:00">2021-12-17</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h4><span id> </span></h4><p>二分查找，注意atan2的输入和输出，upper_bound的使用</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">visiblePoints</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; points, <span class="keyword">int</span> angle, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; location)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(points.<span class="built_in">size</span>()==<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">double</span>&gt; polars;</span><br><span class="line">        <span class="keyword">int</span> overlap=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> num_ext = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;points.<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="built_in">point</span>=points[i];</span><br><span class="line">            <span class="keyword">int</span> x = <span class="built_in">point</span>[<span class="number">0</span>],y=<span class="built_in">point</span>[<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>((location[<span class="number">0</span>]==x) &amp;&amp; (location[<span class="number">1</span>]==y) )&#123;</span><br><span class="line">                overlap++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">double</span> theta = <span class="built_in">atan2</span>(x-location[<span class="number">0</span>],y-location[<span class="number">1</span>]);</span><br><span class="line">                polars.push_back(theta);</span><br><span class="line">                polars.push_back(theta+<span class="number">2</span>*M_PI);</span><br><span class="line">                num_ext++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        sort(polars.<span class="built_in">begin</span>(),polars.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">int</span> max_num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;polars.<span class="built_in">size</span>()-num_ext;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> up_idx = upper_bound(polars.<span class="built_in">begin</span>()+i,polars.<span class="built_in">end</span>(), polars[i]+angle*M_PI/<span class="number">180</span>)-polars.<span class="built_in">begin</span>();</span><br><span class="line">            max_num = <span class="built_in">max</span>(max_num,up_idx-i);</span><br><span class="line">        &#125;</span><br><span class="line">        max_num += overlap;</span><br><span class="line">        <span class="keyword">return</span> max_num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
       
     </div>
 
