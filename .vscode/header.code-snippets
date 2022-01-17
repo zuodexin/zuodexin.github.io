@@ -28,5 +28,14 @@
 			"```"
 		],
 		"description": "new leetcode article"
+	},
+	"Code block": {
+		"scope": "markdown",
+		"prefix": "cpp",
+		"body": [
+			"```c++",
+			"```"
+		],
+		"description": "new cpp block"
 	}
 }
